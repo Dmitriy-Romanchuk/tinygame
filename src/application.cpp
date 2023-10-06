@@ -8,15 +8,15 @@ application::~application()
 {
 }
 
-void application::input()
+void application::init()
 {
 }
 
-void application::update()
+void application::run()
 {
 }
 
-void application::render()
+void application::deinit()
 {
 }
 

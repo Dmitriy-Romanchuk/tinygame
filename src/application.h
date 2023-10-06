@@ -8,9 +8,9 @@ public:
     application(/* args */);
     ~application();
 
-    void input();
-    void update();
-    void render();
+    void init();
+    void run();
+    void deinit();
 
 };
 
