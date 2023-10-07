@@ -11,6 +11,7 @@ set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/application.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/playing_area.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/splash_screen.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/game_controller.cpp
 )
 
 add_executable(launcher ${SOURCE})

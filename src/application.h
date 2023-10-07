@@ -1,9 +1,13 @@
 #pragma once
 
+#include "playing_area.h"
+#include "splash_screen.h"
+
 class application
 {
 private:
-    /* data */
+    velcome_screen splash;
+    board playing_area;
 public:
     application(/* args */);
     ~application();
@@ -11,7 +15,6 @@ public:
     void init();
     void run();
     void deinit();
-
 };
 
 

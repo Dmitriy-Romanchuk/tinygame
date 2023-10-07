@@ -9,5 +9,5 @@ private:
 public:
     board();
     ~board();
-    void drawer();
+    void render_playing_area();
 };
