@@ -4,9 +4,9 @@
 
 int main()
 {
-    application game;
+    Application game;
 
-    game.init();
+    game.run();
 
     system("pause");
 

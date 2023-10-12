@@ -9,10 +9,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/application.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/playing_area.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/splash_screen.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/game_controller.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/players.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/game_page.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/splash.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/player.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/lobby.cpp
 )
 
-add_executable(launcher ${SOURCE})
+add_executable(app ${SOURCE})

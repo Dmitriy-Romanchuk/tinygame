@@ -1,19 +1,32 @@
-#include "splash_screen.h"
+#include "splash.h"
 
 #include <iostream>
 #include <windows.h>
 
-velcome_screen::velcome_screen(/* args */)
+Splash::Splash(/* args */)
 {
 }
 
-velcome_screen::~velcome_screen()
+Splash::~Splash()
 {
 }
 
-void velcome_screen::render_velcome_screen()
+Type Splash::getPageType() const
 {
-    int i = 5;
+    return Type();
+}
+
+void Splash::input(std::string)
+{
+}
+
+void Splash::update(float dt)
+{
+}
+
+void Splash::render()
+{
+    int i = 3;
     while (i >= 0)
         {
             Sleep(1000);    //задержка в 1000 миллисекунд (1 секунда)

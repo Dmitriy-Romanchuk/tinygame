@@ -1,26 +1,91 @@
 #include "application.h"
 
-application::application(/* args */)
+#include <iostream>
+
+Application::Application(/* args */)
 {
 }
 
-application::~application()
+Application::~Application()
+{
+    clearCurrentPage();
+}
+
+void Application::init()
+{
+    swapPage(Page::Type::Splash);
+}
+
+void Application::run()
+{
+    constexpr float defaultDeltaTime = 1.0f / 60.0f;
+    std::string input;
+    
+    while(m_IsRunning)
+    {
+        input.clear();
+        processInput(input);
+        m_currentPage->input(input);
+        m_currentPage->update(defaultDeltaTime);
+
+        m_currentPage->render();
+    }
+}
+
+void Application::deinit()
 {
 }
 
-void application::init()
+void Application::processInput(std::string& input) const
 {
-    splash.render_velcome_screen();
-    sign_controller.select_game_sign();
-
+    std::cin >> input;
 }
 
-void application::run()
-{
-    playing_area.render_playing_area();
+void Application::swapPage(Page::Type pageType)
+{   
+    if(m_currentPage != nullptr && m_currentPage->getPageType() == pageType)
+    {
+        return;
+    }
+
+    if (pageType == Page::Type::Splash)
+    {
+        clearCurrentPage();
+        m_currentPage = createSplashPage();
+        return;
+    }
+
+    if (pageType == Page::Type::Lobby)
+    {
+        clearCurrentPage();
+        return;
+    }
+    
+    if (pageType == Page::Type::Game)
+    {
+        clearCurrentPage();
+        return;
+    }
 }
 
-void application::deinit()
+Page *Application::createSplashPage() const
 {
+    return nullptr;
 }
+
+Page *Application::createLobbyPage() const
+{
+    return nullptr;
+}
+
+Page *Application::createGamePage() const
+{
+    return nullptr;
+}
+
+void Application::clearCurrentPage()
+{
+    delete m_currentPage;
+}
+
 

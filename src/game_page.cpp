@@ -1,17 +1,25 @@
-#include "playing_area.h"
+#include "game_page.h"
 
 #include <iomanip>
 #include <iostream>
 
-board::board()
+GamePage::GamePage()
 {
 }
 
-board::~board()
+GamePage::~GamePage()
 {
 }
 
-void board::render_playing_area()
+void GamePage::input(std::string)
+{
+}
+
+void GamePage::update(float dt)
+{
+}
+
+void render()
 {   
     std::cout << std::setw(4) << "|" << std::setw(4) << "|" << std::endl;
     std::cout << " X "  << "|" << " O " << "|" << " O " << std::endl;
