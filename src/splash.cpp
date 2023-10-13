@@ -11,9 +11,9 @@ Splash::~Splash()
 {
 }
 
-Type Splash::getPageType() const
+Page::Type Splash::getPageType() const
 {
-    return Type();
+    return Page::Type::Splash;
 }
 
 void Splash::input(std::string)
@@ -35,4 +35,5 @@ void Splash::render()
             i--;
         }
     system("cls");
+    
 }

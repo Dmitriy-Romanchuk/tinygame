@@ -11,7 +11,7 @@ public:
     ~Splash();
 
 public:
-    Type getPageType() const; 
+    Type getPageType() const override; 
 
     void input(std::string) override;
     void update(float dt) override;
