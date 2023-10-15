@@ -6,6 +6,7 @@ int main()
 {
     Application game;
 
+    game.init();
     game.run();
 
     system("pause");

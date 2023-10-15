@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "cmake -B .build -S . -G 'Ninja' -DCMAKE_BUILD_TYPE=Debug",
+            
+        },
+        {
+            "label": "Build CMake",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "ninja -C .build",
+            "dependsOn": [
+                "Configure"
+            ]
+        },
+    ]
+}
+

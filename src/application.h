@@ -1,7 +1,9 @@
 #pragma once
 
-
+#include "game_page.h"
+#include "lobby.h"
 #include "page.h"
+#include "splash.h"
 
 #include <string>
 
@@ -19,17 +21,15 @@ public:
     void swapPage(Page::Type pageType);
 
 private:
-    Page* createSplashPage() const;
-    Page* createLobbyPage() const;
-    Page* createGamePage() const;
+    Page* createSplashPage();
+    Page* createLobbyPage();
+    Page* createGamePage();
 
     void clearCurrentPage();
 
 private:
-    bool m_IsRunning = false;
+    bool m_IsRunning = true;
 
 private:
     Page* m_currentPage = nullptr;
 };
-
-

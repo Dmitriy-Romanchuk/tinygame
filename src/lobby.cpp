@@ -17,9 +17,8 @@ Page::Type Lobby::getPageType() const
 }
 
 void Lobby::input(std::string)
-{   
- 
-
+{
+    std::cout << "input lobbys page" << std::endl;
 }
 
 void Lobby::update(float)

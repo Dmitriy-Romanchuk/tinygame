@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Application::Application(/* args */)
+Application::Application()
 {
 }
 
@@ -19,9 +19,9 @@ void Application::init()
 void Application::run()
 {
     constexpr float defaultDeltaTime = 1.0f / 60.0f;
-    std::string input;
-    
-    while(m_IsRunning)
+    std::string input = "Test";
+
+    while (m_IsRunning)
     {
         input.clear();
         processInput(input);
@@ -42,8 +42,8 @@ void Application::processInput(std::string& input) const
 }
 
 void Application::swapPage(Page::Type pageType)
-{   
-    if(m_currentPage != nullptr && m_currentPage->getPageType() == pageType)
+{
+    if (m_currentPage != nullptr && m_currentPage->getPageType() == pageType)
     {
         return;
     }
@@ -60,7 +60,7 @@ void Application::swapPage(Page::Type pageType)
         clearCurrentPage();
         return;
     }
-    
+
     if (pageType == Page::Type::Game)
     {
         clearCurrentPage();
@@ -68,24 +68,25 @@ void Application::swapPage(Page::Type pageType)
     }
 }
 
-Page *Application::createSplashPage() const
+Page* Application::createSplashPage()
 {
-    return nullptr;
+    m_currentPage = new Splash;
+    return m_currentPage;
 }
 
-Page *Application::createLobbyPage() const
+Page* Application::createLobbyPage()
 {
-    return nullptr;
+    m_currentPage = new Lobby;
+    return m_currentPage;
 }
 
-Page *Application::createGamePage() const
+Page* Application::createGamePage()
 {
-    return nullptr;
+    m_currentPage = new GamePage;
+    return m_currentPage;
 }
 
 void Application::clearCurrentPage()
 {
     delete m_currentPage;
 }
-
-

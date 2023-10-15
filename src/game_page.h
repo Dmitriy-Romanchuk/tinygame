@@ -7,15 +7,15 @@ class GamePage : public Page
 {
 private:
     char symbols[3][3] = {};
-    
+
 public:
     GamePage();
     ~GamePage();
 
 public:
-    Type getPageType() const; 
+    Type getPageType() const;
 
     void input(std::string) override;
     void update(float dt) override;
-    void render() override;    
+    void render() override;
 };
