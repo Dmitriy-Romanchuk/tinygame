@@ -4,7 +4,7 @@
 #include <iostream>
 
 Lobby::Lobby(Application* app)
-: Page(app)
+    : Page(app)
 {
 }
 
@@ -19,6 +19,14 @@ Page::Type Lobby::getPageType() const
 
 void Lobby::input(const std::string& input)
 {
+    if (m_requestState == StateRequest::PlayerType)
+    {
+        
+    }
+
+    if (m_requestState == StateRequest::PlayerName)
+    {
+    }
 }
 
 void Lobby::update(float)
@@ -27,7 +35,7 @@ void Lobby::update(float)
 
 std::string Lobby::renderRequestType() const
 {
-    return "Input player type:\n";
+    return "Select player type: press [1] if User, [2] - Bot:";
 }
 
 std::string Lobby::renderRequestName() const
@@ -51,5 +59,6 @@ void Lobby::render()
         break;
     }
 
-    std::cout << buff << std::endl;
+    std::cout << "*****LOBBY PAGE*****" << std::endl
+              << buff << std::endl;
 }

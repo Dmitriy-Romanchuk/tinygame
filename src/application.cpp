@@ -41,6 +41,11 @@ void Application::deinit()
 
 void Application::processInput(std::string& input) const
 {
+    if(m_currentPage->getPageType() == Page::Type::Splash)
+    {
+        return;
+    }
+
     std::cin >> input;
 }
 

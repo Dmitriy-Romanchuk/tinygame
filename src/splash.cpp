@@ -28,7 +28,7 @@ void Splash::update(float)
     if (m_DelayTime > 0)
     {
         Sleep(1000);
-        m_DelayTime--;
+        --m_DelayTime;
     }
     else
     {
@@ -40,4 +40,5 @@ void Splash::render()
 {
     system("cls");
     std::cout << "Loading... " << m_DelayTime << std::endl;
+    
 }

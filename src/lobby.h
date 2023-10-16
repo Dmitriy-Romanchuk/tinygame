@@ -10,6 +10,18 @@ public:
     ~Lobby();
 
 public:
+    struct PlayerCtx
+    {
+        enum class Type
+        {
+            Player,
+            Bot
+        };
+    
+        Type playerType;
+        const char* playerName;
+    };
+public:
     Type getPageType() const;
 
     void input(const std::string& input) override;
@@ -27,7 +39,8 @@ private:
 enum class StateRequest
 {
     PlayerType,
-    PlayerName
+    PlayerName,
+    InputError
 };
 
 private:
