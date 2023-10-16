@@ -22,7 +22,7 @@ void Application::init()
 void Application::run()
 {
     constexpr float defaultDeltaTime = 1.0f / 60.0f;
-    std::string input = "";
+    std::string input;
 
     while (m_IsRunning)
     {
@@ -61,29 +61,31 @@ void Application::swapPage(Page::Type pageType)
     if (pageType == Page::Type::Lobby)
     {
         clearCurrentPage();
+        m_currentPage = createLobbyPage();
         return;
     }
 
     if (pageType == Page::Type::Game)
     {
         clearCurrentPage();
+        m_currentPage = createGamePage();
         return;
     }
 }
 
 Page* Application::createSplashPage()
 {
-    return new Splash;
+    return new Splash(this);
 }
 
 Page* Application::createLobbyPage()
 {
-    return new Lobby;
+    return new Lobby(this);
 }
 
 Page* Application::createGamePage()
 {
-    return new GamePage;
+    return new GamePage(this);
 }
 
 void Application::clearCurrentPage()

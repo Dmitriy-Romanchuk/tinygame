@@ -6,7 +6,7 @@
 class Lobby final : public Page
 {
 public:
-    Lobby(/* args */);
+    Lobby(Application* app);
     ~Lobby();
 
 public:

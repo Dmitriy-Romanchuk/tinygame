@@ -21,7 +21,7 @@ private:
     char symbols[3][3] = {};
 
 public:
-    GamePage();
+    GamePage(Application* app);
     GamePage(const PlayerCtx& player_1, const PlayerCtx& player_2);
     ~GamePage();
 

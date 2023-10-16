@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-Lobby::Lobby(/* args */)
+Lobby::Lobby(Application* app)
+: Page(app)
 {
 }
 

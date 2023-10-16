@@ -1,9 +1,12 @@
 #include "splash.h"
 
+#include "application.h"
+
 #include <iostream>
 #include <windows.h>
 
-Splash::Splash(/* args */)
+Splash::Splash(Application* app)
+    : Page(app)
 {
 }
 
@@ -22,17 +25,19 @@ void Splash::input(const std::string& input)
 
 void Splash::update(float)
 {
+    if (m_DelayTime > 0)
+    {
+        Sleep(1000);
+        m_DelayTime--;
+    }
+    else
+    {
+        m_app->swapPage(Page::Type::Lobby);
+    }
 }
 
 void Splash::render()
 {
-    int i = 3;
-    while (i >= 0)
-    {
-        Sleep(1000); // задержка в 1000 миллисекунд (1 секунда)
-        system("cls");
-        std::cout << "Loading... " << i << std::endl;
-        i--;
-    }
     system("cls");
+    std::cout << "Loading... " << m_DelayTime << std::endl;
 }

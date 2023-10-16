@@ -3,7 +3,8 @@
 #include <iomanip>
 #include <iostream>
 
-GamePage::GamePage()
+GamePage::GamePage(Application* app)
+: Page(app)
 {
 }
 

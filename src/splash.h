@@ -6,7 +6,7 @@
 class Splash final : public Page
 {
 public:
-    Splash(/* args */);
+    Splash(Application* app);
     ~Splash();
 
 public:
@@ -15,4 +15,7 @@ public:
     void input(const std::string& input) override;
     void update(float dt) override;
     void render() override;
+
+private:
+    int m_DelayTime = 3;
 };
