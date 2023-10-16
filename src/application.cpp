@@ -1,4 +1,7 @@
 #include "application.h"
+#include "lobby.h"
+#include "page.h"
+#include "splash.h"
 
 #include <iostream>
 
@@ -19,16 +22,16 @@ void Application::init()
 void Application::run()
 {
     constexpr float defaultDeltaTime = 1.0f / 60.0f;
-    std::string input = "Test";
+    std::string input = "";
 
     while (m_IsRunning)
     {
+        m_currentPage->render();
+
         input.clear();
         processInput(input);
         m_currentPage->input(input);
         m_currentPage->update(defaultDeltaTime);
-
-        m_currentPage->render();
     }
 }
 
@@ -70,20 +73,17 @@ void Application::swapPage(Page::Type pageType)
 
 Page* Application::createSplashPage()
 {
-    m_currentPage = new Splash;
-    return m_currentPage;
+    return new Splash;
 }
 
 Page* Application::createLobbyPage()
 {
-    m_currentPage = new Lobby;
-    return m_currentPage;
+    return new Lobby;
 }
 
 Page* Application::createGamePage()
 {
-    m_currentPage = new GamePage;
-    return m_currentPage;
+    return new GamePage;
 }
 
 void Application::clearCurrentPage()

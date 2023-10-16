@@ -8,6 +8,7 @@ int main()
 
     game.init();
     game.run();
+    game.deinit();
 
     system("pause");
 

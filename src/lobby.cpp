@@ -16,15 +16,39 @@ Page::Type Lobby::getPageType() const
     return Page::Type::Lobby;
 }
 
-void Lobby::input(std::string)
+void Lobby::input(const std::string& input)
 {
-    std::cout << "input lobbys page" << std::endl;
 }
 
 void Lobby::update(float)
 {
 }
 
+std::string Lobby::renderRequestType() const
+{
+    return "Input player type:\n";
+}
+
+std::string Lobby::renderRequestName() const
+{
+    return "Input player name:\n";
+}
+
 void Lobby::render()
 {
+    std::string buff;
+
+    switch (m_requestState)
+    {
+    case StateRequest::PlayerType:
+        buff = renderRequestType();
+        break;
+    case StateRequest::PlayerName:
+        buff = renderRequestName();
+        break;
+    default:
+        break;
+    }
+
+    std::cout << buff << std::endl;
 }

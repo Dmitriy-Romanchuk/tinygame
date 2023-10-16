@@ -1,13 +1,10 @@
 #pragma once
 
 #include "game_page.h"
-#include "lobby.h"
-#include "page.h"
-#include "splash.h"
 
 #include <string>
 
-class Application
+class Application final
 {
 public:
     Application(/* args */);

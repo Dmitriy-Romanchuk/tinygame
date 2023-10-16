@@ -16,13 +16,11 @@ Page::Type Splash::getPageType() const
     return Page::Type::Splash;
 }
 
-void Splash::input(std::string input)
+void Splash::input(const std::string& input)
 {
-    std::cout << "input splash " << input << std::endl;
-    // return;
 }
 
-void Splash::update(float dt)
+void Splash::update(float)
 {
 }
 

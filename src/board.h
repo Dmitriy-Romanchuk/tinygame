@@ -1,18 +1,25 @@
 #pragma once
 
 #include "page.h"
-#include <string>
 
-class Splash final : public Page
+class board : public Page
 {
+private:
+    /* data */
 public:
-    Splash(/* args */);
-    ~Splash();
+    board(/* args */);
+    ~board();
 
 public:
-    Type getPageType() const override;
-
     void input(const std::string& input) override;
     void update(float dt) override;
     void render() override;
 };
+
+board::board(/* args */)
+{
+}
+
+board::~board()
+{
+}
