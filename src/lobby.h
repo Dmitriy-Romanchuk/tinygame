@@ -29,10 +29,9 @@ public:
     void render() override;
 
 private:
-std::string renderRequestType() const;
-
-
-std::string renderRequestName() const;
+void renderRequestType(std::string& buff) ;
+void renderRequestName(std::string& buff) const;
+void renderErrorInput(std::string& buff) const;
 
 
 private:
@@ -40,10 +39,10 @@ enum class StateRequest
 {
     PlayerType,
     PlayerName,
-    InputError
 };
 
 private:
     StateRequest m_requestState = StateRequest::PlayerType;
+    bool m_inputError = false;
 
 };

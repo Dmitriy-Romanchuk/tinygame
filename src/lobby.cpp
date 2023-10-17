@@ -21,6 +21,10 @@ void Lobby::input(const std::string& input)
 {
     if (m_requestState == StateRequest::PlayerType)
     {
+        if (input != "1" || input != "2")
+        {
+            m_inputError = true;
+        }
         
     }
 
@@ -33,32 +37,44 @@ void Lobby::update(float)
 {
 }
 
-std::string Lobby::renderRequestType() const
+void Lobby::renderRequestType(std::string& buff)
 {
-    return "Select player type: press [1] if User, [2] - Bot:";
+    if (m_inputError == true)
+    {
+        renderErrorInput(buff);
+        m_inputError = false;
+    }
+    buff.append("Select player type: press [1] if User, [2] - Bot:");
 }
 
-std::string Lobby::renderRequestName() const
+void Lobby::renderRequestName(std::string& buff) const
 {
-    return "Input player name:\n";
+    buff.append("Input player name:\n");
+}
+
+void Lobby::renderErrorInput(std::string& buff) const
+{
+    buff.append("Error input. Try again.\n");
 }
 
 void Lobby::render()
 {
     std::string buff;
+    buff.clear();
 
     switch (m_requestState)
     {
     case StateRequest::PlayerType:
-        buff = renderRequestType();
+        renderRequestType(buff);
         break;
     case StateRequest::PlayerName:
-        buff = renderRequestName();
+        renderRequestName(buff);
         break;
     default:
         break;
     }
 
-    std::cout << "*****LOBBY PAGE*****" << std::endl
+    std::cout << "\t\t*****LOBBY PAGE*****" << std::endl
+              << std::endl
               << buff << std::endl;
 }

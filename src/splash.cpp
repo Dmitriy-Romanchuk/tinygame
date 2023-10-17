@@ -38,7 +38,7 @@ void Splash::update(float)
 
 void Splash::render()
 {
-    system("cls");
+    
     std::cout << "Loading... " << m_DelayTime << std::endl;
     
 }

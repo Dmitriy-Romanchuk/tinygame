@@ -26,12 +26,15 @@ void Application::run()
 
     while (m_IsRunning)
     {
+        system("cls");
+
         m_currentPage->render();
 
         input.clear();
         processInput(input);
         m_currentPage->input(input);
         m_currentPage->update(defaultDeltaTime);
+        
     }
 }
 
