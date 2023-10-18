@@ -1,5 +1,5 @@
 #include "lobby.h"
-#include "player.h"
+#include "application.h"
 
 #include <iostream>
 
@@ -21,30 +21,63 @@ void Lobby::input(const std::string& input)
 {
     if (m_requestState == StateRequest::PlayerType)
     {
-        if (input != "1" || input != "2")
+        if (input != "1" && input != "2")
         {
-            m_inputError = true;
+            m_hasInputError = true;
         }
-        
+        else
+        {
+            fillPlayerCtx(input);
+            m_requestState = StateRequest::PlayerName;
+        }
     }
 
     if (m_requestState == StateRequest::PlayerName)
     {
+        if (input.empty())
+        {
+            m_hasInputError = true;
+        }
+        else
+        {
+            fillPlayerCtx(input);
+            m_requestState = StateRequest::PlayerType;
+            m_countPlayers++;
+        }
     }
 }
 
-void Lobby::update(float)
+void Lobby::update()
 {
-}
-
-void Lobby::renderRequestType(std::string& buff)
-{
-    if (m_inputError == true)
+    if (m_countPlayers >= m_maxPlayers)
     {
-        renderErrorInput(buff);
-        m_inputError = false;
+        m_app->swapPage(Page::Type::Game);
     }
-    buff.append("Select player type: press [1] if User, [2] - Bot:");
+}
+
+void Lobby::fillPlayerCtx(const std::string& input)
+{
+    if (m_requestState == StateRequest::PlayerType)
+    {
+        if (input == "1")
+        {
+            m_players[m_countPlayers].playerType = PlayerCtx::Type::Player;
+        }
+        else if (input == "2")
+        {
+            m_players[m_countPlayers].playerType = PlayerCtx::Type::Bot;
+        }
+    }
+
+    if (m_requestState == StateRequest::PlayerName)
+    {
+        m_players[m_countPlayers].playerName = input;
+    }
+}
+
+void Lobby::renderRequestType(std::string& buff) const
+{
+    buff.append("Select player type: press [1] - Player, [2] - Bot:");
 }
 
 void Lobby::renderRequestName(std::string& buff) const
@@ -61,6 +94,12 @@ void Lobby::render()
 {
     std::string buff;
     buff.clear();
+
+    if (m_hasInputError == true)
+    {
+        renderErrorInput(buff);
+        m_hasInputError = false;
+    }
 
     switch (m_requestState)
     {

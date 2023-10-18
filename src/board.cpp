@@ -15,7 +15,7 @@ void board::input(const std::string& input)
 {
 
 }
-void board::update(float dt)
+void board::update()
 {
 
 }

@@ -21,7 +21,7 @@ void GamePage::input(const std::string& input)
 {
 }
 
-void GamePage::update(float dt)
+void GamePage::update()
 {
 }
 
@@ -31,5 +31,5 @@ void GamePage::render()
 
 void render()
 {
-    
+    std::cout << "\t\t*****GAME PAGE*****" << std::endl << std::endl;
 }

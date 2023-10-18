@@ -12,7 +12,7 @@ public:
 
 public:
     void input(const std::string& input) ;
-    void update(float dt) ;
+    void update() ;
     void render() ;
 };
 

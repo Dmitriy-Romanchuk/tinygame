@@ -25,7 +25,7 @@ public:
 
 public:
     virtual void input(const std::string& input) = 0;
-    virtual void update(float dt) = 0;
+    virtual void update() = 0;
     virtual void render() = 0;
 
 protected:
