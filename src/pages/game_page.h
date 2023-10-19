@@ -10,7 +10,8 @@ public:
 public:
     GamePage(Application* app);
     
-    GamePage(const PlayerCtx);
+    //GamePage(const PlayerCtx);
+    //GamePage::GamePage(){};
     ~GamePage();
 
 public:

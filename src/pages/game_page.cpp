@@ -1,3 +1,4 @@
+#include "board.h"
 #include "game_page.h"
 #include "lobby.h"
 
@@ -5,14 +6,14 @@
 #include <iostream>
 
 GamePage::GamePage(Application* app)
-: Page(app)
+    : Page(app)
 {
 }
 
-GamePage::GamePage(const PlayerCtx)
-{  
-    std::cout << "constructor Game page";
-}
+// GamePage::GamePage(const PlayerCtx)
+//{
+//     std::cout << "constructor Game page";
+// }
 
 GamePage::~GamePage()
 {
@@ -34,9 +35,6 @@ void GamePage::update()
 
 void GamePage::render()
 {
-}
-
-void render()
-{
-    std::cout << "\t\t*****GAME PAGE*****" << std::endl << std::endl;
+    std::cout << "\t\t*****GAME PAGE*****" << std::endl;
+    std::cout <<;
 }

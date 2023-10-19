@@ -34,7 +34,6 @@ void Application::run()
         processInput(input);
         m_currentPage->input(input);
         m_currentPage->update();
-        
     }
 }
 
@@ -44,12 +43,11 @@ void Application::deinit()
 
 void Application::processInput(std::string& input) const
 {
-    if(m_currentPage->getPageType() == Page::Type::Splash)
+    if (m_currentPage->getPageType() == Page::Type::Splash)
     {
         return;
     }
     std::cin >> input;
-
 }
 
 void Application::swapPage(Page::Type pageType)
