@@ -14,6 +14,7 @@ public:
 
 public:
     Type getPageType() const;
+    PlayerCtx* getContext();
 
     void input(const std::string& input) override;
     void update() override;

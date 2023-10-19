@@ -1,17 +1,16 @@
 #pragma once
 
+#include "PlayerCtx.h"
 #include "page.h"
 #include <string>
-
-
 
 class GamePage : public Page
 {
 public:
-
 public:
     GamePage(Application* app);
-    //GamePage(const PlayerCtx& player_1, const PlayerCtx& player_2);
+    
+    GamePage(const PlayerCtx);
     ~GamePage();
 
 public:

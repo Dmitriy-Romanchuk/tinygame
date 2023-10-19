@@ -48,8 +48,8 @@ void Application::processInput(std::string& input) const
     {
         return;
     }
-
     std::cin >> input;
+
 }
 
 void Application::swapPage(Page::Type pageType)

@@ -17,10 +17,16 @@ Page::Type Lobby::getPageType() const
     return Page::Type::Lobby;
 }
 
+PlayerCtx* Lobby::getContext()
+{
+    return m_players;
+}
+
 void Lobby::input(const std::string& input)
 {
-    if (m_requestState == StateRequest::PlayerType)
+    switch (m_requestState)
     {
+    case StateRequest::PlayerType:
         if (input != "1" && input != "2")
         {
             m_hasInputError = true;
@@ -30,10 +36,8 @@ void Lobby::input(const std::string& input)
             fillPlayerCtx(input);
             m_requestState = StateRequest::PlayerName;
         }
-    }
-
-    if (m_requestState == StateRequest::PlayerName)
-    {
+        break;
+    case StateRequest::PlayerName:
         if (input.empty())
         {
             m_hasInputError = true;
@@ -44,6 +48,9 @@ void Lobby::input(const std::string& input)
             m_requestState = StateRequest::PlayerType;
             m_countPlayers++;
         }
+        break;
+    default:
+        break;
     }
 }
 

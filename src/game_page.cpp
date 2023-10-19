@@ -1,4 +1,5 @@
 #include "game_page.h"
+#include "lobby.h"
 
 #include <iomanip>
 #include <iostream>
@@ -6,6 +7,11 @@
 GamePage::GamePage(Application* app)
 : Page(app)
 {
+}
+
+GamePage::GamePage(const PlayerCtx)
+{  
+    std::cout << "constructor Game page";
 }
 
 GamePage::~GamePage()
@@ -19,6 +25,7 @@ Page::Type GamePage::getPageType() const
 
 void GamePage::input(const std::string& input)
 {
+    std::cout << "Hello";
 }
 
 void GamePage::update()

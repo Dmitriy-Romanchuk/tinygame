@@ -15,6 +15,7 @@ public:
     };
 
 public:
+    Page(){};
     virtual ~Page(){};
 
 protected:
