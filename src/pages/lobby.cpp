@@ -89,7 +89,7 @@ void Lobby::renderRequestType(std::string& buff) const
 
 void Lobby::renderRequestName(std::string& buff) const
 {
-    buff.append("Input player name:\n");
+    buff.append("Input player name:");
 }
 
 void Lobby::renderErrorInput(std::string& buff) const

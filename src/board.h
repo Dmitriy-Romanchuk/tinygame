@@ -2,24 +2,18 @@
 
 #include "page.h"
 
-class board
+#include <string>
+
+class Board
 {
 private:
-    /* data */
-public:
-    board(/* args */);
-    ~board();
+    std::string m_gameBoard;
 
 public:
-    void input(const std::string& input) ;
-    void update() ;
-    void render() ;
+    Board(/* args */);
+    ~Board();
+
+public:
+    std::string getGameBoard();
+    void setCellNumber();
 };
-
-board::board(/* args */)
-{
-}
-
-board::~board()
-{
-}

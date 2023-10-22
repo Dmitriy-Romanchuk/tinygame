@@ -3,6 +3,7 @@
 #include <string>
 
 class Application;
+class Lobby;
 
 class Page
 {
@@ -20,6 +21,7 @@ public:
 
 protected:
     Page(Application* app) : m_app(app){};
+    Page(Lobby* lbb) : m_lbb(lbb){};
 
 public:
     virtual Type getPageType() const = 0;
@@ -31,4 +33,5 @@ public:
 
 protected:
     Application* m_app;
+    Lobby* m_lbb;
 };
