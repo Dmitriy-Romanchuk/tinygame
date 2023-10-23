@@ -27,14 +27,19 @@ const Board::Data& Board::getData() const
     return m_data;
 }
 
-void Board::render(std::string& buff) const
+//void Board::render(std::string& buff) const
+//{
+//    static std::string boardBuff(BoardTemplate);
+//
+//    // fill
+//    fillBoard(boardBuff);
+//
+//    buff.append(boardBuff);
+//}
+
+void render()
 {
-    static std::string boardBuff(BoardTemplate);
-
-    // fill
-    fillBoard(boardBuff);
-
-    buff.append(boardBuff);
+    std::cout << BoardTemplate;
 }
 
 void Board::fillBoard(std::string& boardBuff) const

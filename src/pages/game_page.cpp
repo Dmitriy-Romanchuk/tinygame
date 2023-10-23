@@ -56,6 +56,8 @@ void GamePage::render()
 void GamePage::renderWelcome(std::string& buff) const
 {
     buff.append("Starting battle!");
+    m_board->;
+
     StateRequest m_requestState = StateRequest::CellNumber;
 }
 

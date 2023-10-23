@@ -16,7 +16,8 @@ public:
 public:
     const Data& getData() const;
 
-    void render(std::string& buff) const;
+    //void render(std::string& buff) const;
+    void render();
 
 private:
     void fillBoard(std::string& boardBuff) const;
