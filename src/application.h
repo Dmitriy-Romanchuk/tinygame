@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game_page.h"
+#include "PlayerCtx.h"
 
 #include <string>
 
@@ -17,6 +18,9 @@ public:
     void processInput(std::string& input) const;
     void swapPage(Page::Type pageType);
 
+    const PlayerCtx& getPlayerCotext(uint32_t index) const;
+    void setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx);
+
 private:
     Page* createSplashPage();
     Page* createLobbyPage();
@@ -26,6 +30,7 @@ private:
 
 private:
     bool m_IsRunning = true;
+    PlayersCtx m_players;
 
 private:
     Page* m_currentPage = nullptr;

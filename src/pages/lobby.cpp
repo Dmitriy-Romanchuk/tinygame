@@ -17,11 +17,6 @@ Page::Type Lobby::getPageType() const
     return Page::Type::Lobby;
 }
 
-PlayerCtx* Lobby::getContext()
-{
-    return m_players;
-}
-
 void Lobby::input(const std::string& input)
 {
     switch (m_requestState)
@@ -46,7 +41,7 @@ void Lobby::input(const std::string& input)
         {
             fillPlayerCtx(input);
             m_requestState = StateRequest::PlayerType;
-            m_countPlayers++;
+            m_playerCounter++;
         }
         break;
     default:
@@ -56,7 +51,7 @@ void Lobby::input(const std::string& input)
 
 void Lobby::update()
 {
-    if (m_countPlayers >= m_maxPlayers)
+    if (m_playerCounter >= m_maxPlayers)
     {
         m_app->swapPage(Page::Type::Game);
     }
@@ -64,22 +59,27 @@ void Lobby::update()
 
 void Lobby::fillPlayerCtx(const std::string& input)
 {
+    auto playerCtx = m_app->getPlayerCotext(m_playerCounter);
+
     if (m_requestState == StateRequest::PlayerType)
     {
         if (input == "1")
         {
-            m_players[m_countPlayers].playerType = PlayerCtx::Type::Player;
+            playerCtx.playerType = PlayerCtx::Type::Player;
         }
-        else if (input == "2")
+
+        if (input == "2")
         {
-            m_players[m_countPlayers].playerType = PlayerCtx::Type::Bot;
+            playerCtx.playerType = PlayerCtx::Type::Bot;
         }
     }
 
     if (m_requestState == StateRequest::PlayerName)
     {
-        m_players[m_countPlayers].playerName = input;
+        playerCtx.playerName = input;
     }
+
+    m_app->setPlayerCotext(m_playerCounter, playerCtx);
 }
 
 void Lobby::renderRequestType(std::string& buff) const
@@ -100,7 +100,8 @@ void Lobby::renderErrorInput(std::string& buff) const
 void Lobby::render()
 {
     std::string buff;
-    buff.clear();
+    // buff.reserve(1000);
+    // buff.clear();
 
     if (m_hasInputError == true)
     {

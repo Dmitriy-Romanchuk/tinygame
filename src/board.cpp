@@ -3,20 +3,54 @@
 #include <iostream>
 #include <iomanip>
 
+namespace
+{
+    constexpr const char* BoardTemplate = "   |   |   \n   |   |   \n   |   |   \n";
+} // namespace
+
+
 Board::Board(/* args */)
 {
+    // auto size = m_data.size();
+    // for (size_t index = 0; index < size; index++)
+    // {
+    //     m_data[index] = ' ';
+    // }
+
+    m_data.fill(' ');
 }
 
-Board::~Board()
+const Board::Data& Board::getData() const
 {
+    return m_data;
 }
 
-std::string Board::getGameBoard()
+void Board::render(std::string& buff) const
 {
-    return m_gameBoard;
+    static std::string boardBuff(BoardTemplate);
+
+    // fill
+    fillBoard(boardBuff);
+
+    buff.append(boardBuff);
 }
-void Board::setCellNumber()
-{}
+
+void Board::fillBoard(std::string& boardBuff) const
+{
+    auto size = m_data.size();
+    for (size_t index = 0; index < size; index++)
+    {
+        boardBuff[index + offset] = m_data[index];
+    }
+    
+}
+
+// std::string Board::getGameBoard()
+// {
+//     return m_gameBoard;
+// }
+// void Board::setCellNumber()
+// {}
 
 //void Board::render()
 //{

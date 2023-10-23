@@ -1,7 +1,6 @@
 #pragma once
 
 #include "page.h"
-#include "PlayerCtx.h"
 
 #include <string>
 #include <cstdint>
@@ -14,7 +13,6 @@ public:
 
 public:
     Type getPageType() const;
-    PlayerCtx* getContext();
 
     void input(const std::string& input) override;
     void update() override;
@@ -34,9 +32,8 @@ private:
     };
 
 private:
-    uint32_t m_countPlayers = 0;
+    uint32_t m_playerCounter = 0;
     uint32_t m_maxPlayers = 2;
     bool m_hasInputError = false;
     StateRequest m_requestState = StateRequest::PlayerType;
-    PlayerCtx m_players[2];
 };

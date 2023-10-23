@@ -1,5 +1,7 @@
 #pragma once
+
 #include <string>
+#include <array>
 
 struct PlayerCtx
 {
@@ -13,3 +15,4 @@ struct PlayerCtx
     std::string playerName = "User";
 };
 
+using PlayersCtx = std::array<PlayerCtx, 2>;

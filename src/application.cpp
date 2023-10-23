@@ -4,6 +4,7 @@
 #include "splash.h"
 
 #include <iostream>
+#include <cassert>
 
 Application::Application()
 {
@@ -91,10 +92,22 @@ Page* Application::createLobbyPage()
 
 Page* Application::createGamePage()
 {
-    return new GamePage(this);
+    return new GamePage(this, m_players);
 }
 
 void Application::clearCurrentPage()
 {
     delete m_currentPage;
+}
+
+const PlayerCtx& Application::getPlayerCotext(uint32_t index) const
+{
+    assert(index < m_players.size());
+    return m_players[index];
+}
+
+void Application::setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx)
+{
+    assert(index < m_players.size());
+    m_players[index] = playerCtx;
 }
