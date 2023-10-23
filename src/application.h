@@ -3,6 +3,7 @@
 #include "game_page.h"
 #include "PlayerCtx.h"
 
+#include <stdint.h>
 #include <string>
 
 class Application final

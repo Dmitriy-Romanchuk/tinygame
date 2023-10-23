@@ -1,6 +1,6 @@
 #pragma once
 
-#include "application.h"
+//#include "application.h"
 #include "PlayerCtx.h"
 #include "page.h"
 
@@ -11,11 +11,7 @@
 class GamePage : public Page
 {
 public:
-public:
-   //GamePage(Lobby* lbb);
     GamePage(Application* app, const PlayersCtx& playersCtx);
-    //GamePage(const PlayerCtx, const PlayerCtx);
-    //GamePage::GamePage(){};
     ~GamePage();
 
 public:

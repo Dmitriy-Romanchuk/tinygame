@@ -17,8 +17,6 @@ public:
     const Data& getData() const;
 
     void render(std::string& buff) const;
-    // std::string getGameBoard();
-    // void setCellNumber();
 
 private:
     void fillBoard(std::string& boardBuff) const;

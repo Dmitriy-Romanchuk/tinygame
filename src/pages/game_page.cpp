@@ -1,18 +1,6 @@
 #include "game_page.h"
 
-#include "lobby.h"
-
 #include <iostream>
-
-// GamePage::GamePage(Lobby* lbb)
-//     : Page(lbb)
-//{
-// }
-
-// GamePage::GamePage(const PlayerCtx)
-//{
-//     std::cout << "constructor Game page";
-//}
 
 GamePage::GamePage(Application* app, const PlayersCtx& playersCtx)
     : Page(app)
