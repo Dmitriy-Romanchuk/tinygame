@@ -18,10 +18,21 @@ Page::Type GamePage::getPageType() const
 
 void GamePage::input(const std::string& input)
 {
+    if (m_requestState == StateRequest::Welcome)
+    {
+        if (input == "q")
+        {
+            exit(0);
+        }
+    }
 }
 
-void GamePage::update()
+void GamePage::update(const std::string& input)
 {
+    if (m_requestState == StateRequest::Welcome)
+    {
+        m_requestState = StateRequest::CellNumber;
+    }
 }
 
 void GamePage::render()
@@ -35,18 +46,19 @@ void GamePage::render()
     case StateRequest::Welcome:
         renderWelcome(buff);
         break;
+
     case StateRequest::CellNumber:
-        m_board.render(buff);
+        // m_board.render(buff);
         renderCellNumber(buff);
         break;
+
+        if (m_hasInputError == true)
+        {
+            renderErrorInput(buff);
+            m_hasInputError = false;
+        }
     default:
         break;
-    }
-
-    if (m_hasInputError == true)
-    {
-        renderErrorInput(buff);
-        m_hasInputError = false;
     }
 
     std::cout << "\t\t*****GAME PAGE*****\n\n"
@@ -55,15 +67,13 @@ void GamePage::render()
 
 void GamePage::renderWelcome(std::string& buff) const
 {
-    buff.append("Starting battle!");
-    m_board->;
-
-    StateRequest m_requestState = StateRequest::CellNumber;
+    buff.append("Starting battle!\nReady? Press any key to start.\nExit - q.");
 }
 
 void GamePage::renderCellNumber(std::string& buff) const
 {
-    buff.append("Enter cell number (e.g. a2)\n");
+    m_board.render(buff);
+    buff.append("\n\nEnter cell number (e.g. 1 2): ");
 }
 
 void GamePage::renderErrorInput(std::string& buff) const

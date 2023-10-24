@@ -11,13 +11,12 @@ public:
     using Data = std::array<char, 9>;
 
 public:
-    Board(/* args */);
+    Board();
     
 public:
     const Data& getData() const;
 
-    //void render(std::string& buff) const;
-    void render();
+    void render(std::string& buff) const;
 
 private:
     void fillBoard(std::string& boardBuff) const;

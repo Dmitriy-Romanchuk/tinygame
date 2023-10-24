@@ -15,7 +15,7 @@ public:
     Type getPageType() const;
 
     void input(const std::string& input) override;
-    void update() override;
+    void update(const std::string& input) override;
     void render() override;
 
 private:

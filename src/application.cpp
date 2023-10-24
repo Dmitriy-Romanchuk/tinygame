@@ -34,7 +34,7 @@ void Application::run()
         input.clear();
         processInput(input);
         m_currentPage->input(input);
-        m_currentPage->update();
+        m_currentPage->update(input);
     }
 }
 
