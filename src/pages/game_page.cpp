@@ -27,7 +27,7 @@ void GamePage::input(const std::string& input)
     }
 }
 
-void GamePage::update(const std::string& input)
+void GamePage::update(/*const std::string& input*/)
 {
     if (m_requestState == StateRequest::Welcome)
     {

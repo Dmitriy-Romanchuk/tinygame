@@ -34,7 +34,7 @@ void Application::run()
         input.clear();
         processInput(input);
         m_currentPage->input(input);
-        m_currentPage->update(input);
+        m_currentPage->update(/*input*/);
     }
 }
 
@@ -48,6 +48,7 @@ void Application::processInput(std::string& input) const
     {
         return;
     }
+    
     std::cin >> input;
 }
 

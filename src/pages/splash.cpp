@@ -23,7 +23,7 @@ void Splash::input(const std::string& input)
 {
 }
 
-void Splash::update(const std::string& input)
+void Splash::update(/*const std::string& input*/)
 {
     if (m_DelayTime > 0)
     {

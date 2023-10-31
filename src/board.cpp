@@ -43,6 +43,8 @@ void Board::fillBoard(std::string& boardBuff) const
 //    for (size_t index = 0; index < size; index++)
 //    {
 //        boardBuff[index + offset] = m_data[index];
-//    }  
+//    }
+
+    boardBuff[2] = 'x';
 }
 
