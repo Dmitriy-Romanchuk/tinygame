@@ -18,7 +18,7 @@ public:
     Type getPageType() const;
 
     void input(const std::string& input) override;
-    void update(/*const std::string& input*/) override;
+    void update() override;
     void render() override;
 
 private:
@@ -38,4 +38,5 @@ private:
     bool m_hasInputError = false;
     StateRequest m_requestState = StateRequest::Welcome;
     Board m_board;
+    
 };

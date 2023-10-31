@@ -49,7 +49,7 @@ void Lobby::input(const std::string& input)
     }
 }
 
-void Lobby::update(/*const std::string& input*/)
+void Lobby::update()
 {
     if (m_playerCounter >= m_maxPlayers)
     {

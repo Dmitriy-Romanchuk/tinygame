@@ -25,9 +25,14 @@ void GamePage::input(const std::string& input)
             exit(0);
         }
     }
+    else if (m_requestState == StateRequest::CellNumber)
+    {
+        /* code */
+    }
+    
 }
 
-void GamePage::update(/*const std::string& input*/)
+void GamePage::update()
 {
     if (m_requestState == StateRequest::Welcome)
     {
