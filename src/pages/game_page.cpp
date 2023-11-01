@@ -7,27 +7,23 @@ GamePage::GamePage(Application* app, const PlayersCtx& playersCtx)
 {
 }
 
-GamePage::~GamePage()
-{
-}
-
 Page::Type GamePage::getPageType() const
 {
     return Page::Type::Game;
 }
 
-void GamePage::input(const std::string& input)
+void GamePage::onInput(const std::string& input)
 {
     if (m_requestState == StateRequest::Welcome)
     {
-        if (input == "q")
+        if (input == "quit")
         {
             exit(0);
         }
     }
     else if (m_requestState == StateRequest::CellNumber)
     {
-        /* code */
+        
     }
     
 }
@@ -85,3 +81,4 @@ void GamePage::renderErrorInput(std::string& buff) const
 {
     buff.append("Error input. Try again.\n");
 }
+

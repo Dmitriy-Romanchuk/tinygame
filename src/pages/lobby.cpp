@@ -17,7 +17,7 @@ Page::Type Lobby::getPageType() const
     return Page::Type::Lobby;
 }
 
-void Lobby::input(const std::string& input)
+void Lobby::onInput(const std::string& input)
 {
     switch (m_requestState)
     {

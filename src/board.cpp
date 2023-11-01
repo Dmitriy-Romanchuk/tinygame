@@ -37,6 +37,11 @@ void Board::render(std::string& buff) const
     buff.append(boardBuff);
 }
 
+bool Board::onInput(const std::string& input)
+{
+    return false;
+}
+
 void Board::fillBoard(std::string& boardBuff) const
 {
 //    auto size = m_data.size();

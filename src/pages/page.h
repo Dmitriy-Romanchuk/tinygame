@@ -25,7 +25,7 @@ public:
     virtual Type getPageType() const = 0;
 
 public:
-    virtual void input(const std::string& input) = 0;
+    virtual void onInput(const std::string& input) = 0;
     virtual void update() = 0;
     virtual void render() = 0;
 

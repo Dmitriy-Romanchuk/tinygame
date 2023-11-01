@@ -14,9 +14,11 @@ public:
     Board();
     
 public:
-    const Data& getData() const;
-
     void render(std::string& buff) const;
+    bool onInput(const std::string& input);
+    void setPoint();
+
+    const Data& getData() const;
 
 private:
     void fillBoard(std::string& boardBuff) const;
@@ -26,3 +28,7 @@ private:
     std::string m_gameBoard;
 
 };
+
+
+// процессинтпут запрашивает номер ячейки, потом передает его в геймпэйдж, геймпэйдж передает его в oninput плейера
+// где он валидируется и передается в setpoint борда, а гейм пэдж переключает юзеров 

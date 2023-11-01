@@ -19,7 +19,7 @@ Page::Type Splash::getPageType() const
     return Page::Type::Splash;
 }
 
-void Splash::input(const std::string& input)
+void Splash::onInput(const std::string& input)
 {
 }
 
