@@ -1,10 +1,11 @@
 #pragma once
 
-//#include "application.h"
+#include "application.h"
 #include "PlayerCtx.h"
 #include "page.h"
 
 #include "board.h"
+#include "player.h"
 
 #include <string>
 
@@ -37,5 +38,7 @@ private:
     bool m_hasInputError = false;
     StateRequest m_requestState = StateRequest::Welcome;
     Board m_board;
+    Player m_player;
+    PlayerCtx m_currentPlayer;
     
 };

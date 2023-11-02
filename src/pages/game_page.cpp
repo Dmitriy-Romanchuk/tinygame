@@ -23,7 +23,7 @@ void GamePage::onInput(const std::string& input)
     }
     else if (m_requestState == StateRequest::CellNumber)
     {
-        
+        m_hasInputError = m_player.onInput(input);
     }
     
 }
