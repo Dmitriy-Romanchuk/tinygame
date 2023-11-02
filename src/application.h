@@ -32,6 +32,7 @@ private:
 private:
     bool m_IsRunning = true;
     PlayersCtx m_players;
+    PlayerCtx m_currentPlayer;
 
 private:
     Page* m_currentPage = nullptr;

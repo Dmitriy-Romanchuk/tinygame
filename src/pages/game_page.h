@@ -1,6 +1,6 @@
 #pragma once
 
-#include "application.h"
+//#include "application.h"
 #include "PlayerCtx.h"
 #include "page.h"
 
@@ -39,6 +39,6 @@ private:
     StateRequest m_requestState = StateRequest::Welcome;
     Board m_board;
     Player m_player;
-    PlayerCtx m_currentPlayer;
+    
     
 };
