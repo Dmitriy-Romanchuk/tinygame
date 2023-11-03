@@ -37,9 +37,18 @@ void Board::render(std::string& buff) const
     buff.append(boardBuff);
 }
 
-bool Board::onInput(const std::string& input)
+bool Board::trySetPoint(uint32_t x, uint32_t y, char symbol)
 {
-    return false;
+    const uint32_t size = m_data.size();
+    
+    if (false)
+    {
+        return false;
+    }
+    
+    m_data[x + x * y] = symbol;
+
+    return true;
 }
 
 void Board::fillBoard(std::string& boardBuff) const

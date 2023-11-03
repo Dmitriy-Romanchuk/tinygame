@@ -13,6 +13,7 @@ class GamePage : public Page
 {
 public:
     GamePage(Application* app, const PlayersCtx& playersCtx);
+    ~GamePage();
 
 public:
     Type getPageType() const;
@@ -26,6 +27,9 @@ private:
     void renderCellNumber(std::string& buff) const;
     void renderErrorInput(std::string& buff) const;
 
+    Player* createPlayer(const PlayerCtx& playersCtx, char symbol) const;
+    void togglePlayer();
+
 private:
     enum class StateRequest
     {
@@ -38,7 +42,8 @@ private:
     bool m_hasInputError = false;
     StateRequest m_requestState = StateRequest::Welcome;
     Board m_board;
-    Player m_player;
-    
-    
+
+    using Players = std::array<Player*, 2>;
+    uint32_t m_currentPlayerIndex = 0u;
+    Players m_players;
 };

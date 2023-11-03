@@ -2,6 +2,7 @@
 
 #include "page.h"
 
+#include <stdint.h>
 #include <string>
 #include <array>
 
@@ -15,8 +16,7 @@ public:
     
 public:
     void render(std::string& buff) const;
-    bool onInput(const std::string& input);
-    void setPoint();
+    bool trySetPoint(uint32_t x, uint32_t y, char symbol);
 
     const Data& getData() const;
 
@@ -26,6 +26,7 @@ private:
 private:
     Data m_data;
     std::string m_gameBoard;
+    
 
 };
 

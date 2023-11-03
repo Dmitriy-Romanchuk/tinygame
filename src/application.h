@@ -9,7 +9,7 @@
 class Application final
 {
 public:
-    Application(/* args */);
+    Application();
     ~Application();
 
     void init();

@@ -5,6 +5,16 @@
 GamePage::GamePage(Application* app, const PlayersCtx& playersCtx)
     : Page(app)
 {
+    m_players[0] = createPlayer(playersCtx[0], 'X');
+    m_players[1] = createPlayer(playersCtx[1], 'O');
+}
+
+GamePage::~GamePage()
+{
+    for (auto player : m_players)
+    {
+        delete player;
+    }
 }
 
 Page::Type GamePage::getPageType() const
@@ -23,17 +33,26 @@ void GamePage::onInput(const std::string& input)
     }
     else if (m_requestState == StateRequest::CellNumber)
     {
-        m_hasInputError = m_player.onInput(input);
+        m_players[m_currentPlayerIndex]->onInput(input);
     }
     
 }
 
 void GamePage::update()
 {
+    bool noError = false;
+    if (noError == false)
+    {
+        return;
+    }
+    
+
     if (m_requestState == StateRequest::Welcome)
     {
         m_requestState = StateRequest::CellNumber;
     }
+
+    togglePlayer();
 }
 
 void GamePage::render()
@@ -82,3 +101,12 @@ void GamePage::renderErrorInput(std::string& buff) const
     buff.append("Error input. Try again.\n");
 }
 
+Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol) const
+{
+    if (playersCtx.playerType == PlayerCtx::Type::Player)
+    {
+        return new Player(&m_board, symbol, playersCtx);
+    }
+
+    return new Player(&m_board, symbol, playersCtx);
+}
