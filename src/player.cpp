@@ -17,12 +17,12 @@ Player::~Player()
 
 bool Player::onInput(std::string input)
 {   
-    if(input.size() > 1)
+    if(input.size() > 1 || std::stoi(input) > 9)
     {
         return false;
     }
 
-    int cellNumber = input.at(0) - '0';
+    int cellNumber = std::stoi(input);
 
     m_board->trySetPoint(cellNumber, m_symbol);
     return true;

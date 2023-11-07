@@ -46,4 +46,5 @@ private:
     using Players = std::array<Player*, 2>;
     uint32_t m_currentPlayerIndex = 0u;
     Players m_players;
+    bool m_succesSetPoint;
 };

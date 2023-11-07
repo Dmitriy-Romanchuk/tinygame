@@ -30,7 +30,8 @@ void GamePage::onInput(const std::string& input)
     }
     else if (m_requestState == StateRequest::CellNumber)
     {
-        m_players[m_currentPlayerIndex]->onInput(input);
+        m_succesSetPoint = m_players[m_currentPlayerIndex]->onInput(input);
+
     }
 }
 
@@ -46,8 +47,18 @@ void GamePage::update()
     {
         m_requestState = StateRequest::CellNumber;
     }
+    
+    if(m_succesSetPoint == true)
+    {
+        m_hasInputError = true;
+        togglePlayer();
+    }
+    else
+    {
+        m_hasInputError = true;
+    }
 
-    togglePlayer();
+    
 }
 
 void GamePage::render()
@@ -88,7 +99,8 @@ void GamePage::renderWelcome(std::string& buff) const
 void GamePage::renderCellNumber(std::string& buff) const
 {
     m_board.render(buff);
-    buff.append("\n\nEnter cell number (e.g. 1 2): ");
+
+    buff.append("\nSelect cell number in range (1...9): ");
 }
 
 void GamePage::renderErrorInput(std::string& buff) const

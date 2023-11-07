@@ -5,15 +5,15 @@
 
 namespace
 {
-    constexpr const char* BoardTemplate = R"(
-    1     2     3  
-       |     |     
-0      |     |     
-  -----|-----|-----
-1      |     |     
-  -----|-----|-----
-2      |     |     
-       |     |     )";
+    constexpr const char* BoardTemplate = R"( 
+ you play here:                Cell Numbers:
+     |     |                     |     |     
+     |     |                  1  |  2  |  3  
+-----|-----|-----           -----|-----|-----
+     |     |                  4  |  5  |  6  
+-----|-----|-----           -----|-----|-----
+     |     |                  7  |  8  |  9  
+     |     |                     |     |     )";
 } // namespace
 
 Board::Board()
@@ -40,12 +40,12 @@ bool Board::trySetPoint(uint32_t cellNumber, char symbol)
 {
     const uint32_t size = m_data.size();
 
-    // if (m_data[x * y - 1] != ' ')
-    //{
-    //     return false;
-    // }
+    if (m_data[cellNumber - 1] != ' ')
+    {
+         return false;
+    }
 
-    m_data[cellNumber] = symbol;
+    m_data[cellNumber - 1] = symbol;
 
     return true;
 }
