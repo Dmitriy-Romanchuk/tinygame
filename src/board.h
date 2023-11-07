@@ -16,7 +16,7 @@ public:
     
 public:
     void render(std::string& buff) const;
-    bool trySetPoint(uint32_t x, uint32_t y, char symbol);
+    bool trySetPoint(uint32_t cellNumber, char symbol);
 
     const Data& getData() const;
 

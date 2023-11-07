@@ -1,7 +1,8 @@
 #include "player.h"
 
 #include "application.h"
-#include "board.h"
+
+#include <iostream> // need to delete
 
 Player::Player(Board* board, char symbol, const PlayerCtx& ctx)
     : m_board(board)
@@ -15,6 +16,14 @@ Player::~Player()
 }
 
 bool Player::onInput(std::string input)
-{
-    m_board->trySetPoint(0u , 0u, m_symbol);
+{   
+    if(input.size() > 1)
+    {
+        return false;
+    }
+
+    int cellNumber = input.at(0) - '0';
+
+    m_board->trySetPoint(cellNumber, m_symbol);
+    return true;
 }

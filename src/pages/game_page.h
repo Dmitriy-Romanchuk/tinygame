@@ -27,7 +27,7 @@ private:
     void renderCellNumber(std::string& buff) const;
     void renderErrorInput(std::string& buff) const;
 
-    Player* createPlayer(const PlayerCtx& playersCtx, char symbol) const;
+    Player* createPlayer(const PlayerCtx& playersCtx, char symbol);
     void togglePlayer();
 
 private:

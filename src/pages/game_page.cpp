@@ -26,26 +26,21 @@ void GamePage::onInput(const std::string& input)
 {
     if (m_requestState == StateRequest::Welcome)
     {
-        if (input == "quit")
-        {
-            exit(0);
-        }
+        return;
     }
     else if (m_requestState == StateRequest::CellNumber)
     {
         m_players[m_currentPlayerIndex]->onInput(input);
     }
-    
 }
 
 void GamePage::update()
 {
-    bool noError = false;
-    if (noError == false)
-    {
-        return;
-    }
-    
+    //bool noError = false;
+    //if (noError == false)
+    //{
+    //    return;
+    //}
 
     if (m_requestState == StateRequest::Welcome)
     {
@@ -87,7 +82,7 @@ void GamePage::render()
 
 void GamePage::renderWelcome(std::string& buff) const
 {
-    buff.append("Starting battle!\nReady? Press any key to start.\nExit - q.");
+    buff.append("Starting battle!\n");
 }
 
 void GamePage::renderCellNumber(std::string& buff) const
@@ -101,7 +96,7 @@ void GamePage::renderErrorInput(std::string& buff) const
     buff.append("Error input. Try again.\n");
 }
 
-Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol) const
+Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)
 {
     if (playersCtx.playerType == PlayerCtx::Type::Player)
     {
@@ -109,4 +104,17 @@ Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol) const
     }
 
     return new Player(&m_board, symbol, playersCtx);
+}
+
+void GamePage::togglePlayer()
+{
+    if(m_currentPlayerIndex == 0)
+    {
+        m_currentPlayerIndex = 1;
+    }
+    else
+    {
+        m_currentPlayerIndex = 0;
+    }
+
 }
