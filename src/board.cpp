@@ -5,15 +5,18 @@
 
 namespace
 {
-    constexpr const char* BoardTemplate = R"( 
- you play here:                Cell Numbers:
+    constexpr const char* BoardTemplate = R"(
+  You play here:              Cell Numbers:          
+
      |     |                     |     |     
      |     |                  1  |  2  |  3  
 -----|-----|-----           -----|-----|-----
      |     |                  4  |  5  |  6  
 -----|-----|-----           -----|-----|-----
      |     |                  7  |  8  |  9  
-     |     |                     |     |     )";
+     |     |                     |     |     
+     
+)";
 } // namespace
 
 Board::Board()
@@ -40,19 +43,18 @@ bool Board::trySetPoint(uint32_t cellNumber, char symbol)
 {
     const uint32_t size = m_data.size();
 
-    if (m_data[cellNumber - 1] != ' ')
+    if (m_data[cellNumber] != ' ')
     {
-         return false;
+         return true;
     }
 
-    m_data[cellNumber - 1] = symbol;
-
-    return true;
+    m_data[cellNumber] = symbol;
+    return false;
 }
 
 void Board::fillBoard(std::string& boardBuff) const
 {
-    const int offset[9] = { 45, 51, 57, 85, 91, 97, 125, 131, 137 };
+    const int offset[9] = { 104, 110, 116, 196, 202, 208, 288, 294, 300 };
 
     auto size = m_data.size();
     for (size_t index = 0; index < size; index++)

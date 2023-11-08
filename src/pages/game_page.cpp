@@ -30,35 +30,21 @@ void GamePage::onInput(const std::string& input)
     }
     else if (m_requestState == StateRequest::CellNumber)
     {
-        m_succesSetPoint = m_players[m_currentPlayerIndex]->onInput(input);
-
+        m_hasInputError = m_players[m_currentPlayerIndex]->onInput(input);
     }
 }
 
 void GamePage::update()
 {
-    //bool noError = false;
-    //if (noError == false)
-    //{
-    //    return;
-    //}
-
     if (m_requestState == StateRequest::Welcome)
     {
         m_requestState = StateRequest::CellNumber;
     }
-    
-    if(m_succesSetPoint == true)
+
+    if (m_hasInputError == false)
     {
-        m_hasInputError = true;
         togglePlayer();
     }
-    else
-    {
-        m_hasInputError = true;
-    }
-
-    
 }
 
 void GamePage::render()
@@ -74,15 +60,17 @@ void GamePage::render()
         break;
 
     case StateRequest::CellNumber:
-        // m_board.render(buff);
+
         renderCellNumber(buff);
-        break;
 
         if (m_hasInputError == true)
         {
             renderErrorInput(buff);
             m_hasInputError = false;
         }
+
+        break;
+
     default:
         break;
     }
@@ -100,12 +88,13 @@ void GamePage::renderCellNumber(std::string& buff) const
 {
     m_board.render(buff);
 
-    buff.append("\nSelect cell number in range (1...9): ");
+    buff.append(m_players[m_currentPlayerIndex]->getPlayerName());
+    buff.append("! Yours move in the game!\nSelect cell number in range (1...9): ");
 }
 
 void GamePage::renderErrorInput(std::string& buff) const
 {
-    buff.append("Error input. Try again.\n");
+    buff.append("\nError input. Try again.\n");
 }
 
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)
@@ -120,13 +109,22 @@ Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)
 
 void GamePage::togglePlayer()
 {
-    if(m_currentPlayerIndex == 0)
-    {
-        m_currentPlayerIndex = 1;
-    }
-    else
+    if (m_currentPlayerIndex == 1)
     {
         m_currentPlayerIndex = 0;
     }
+    else
+    {
+        m_currentPlayerIndex = 1;
+    }
+}
 
+bool GamePage::checkVictory()
+{
+    for (auto &&i : m_victoryCombinations)
+    {
+        
+    }
+    
+    return false;
 }

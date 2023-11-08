@@ -15,6 +15,7 @@ public:
 
 public:
     bool onInput(std::string input);
+    std::string getPlayerName();
 
 private:
     Board* m_board = nullptr;

@@ -30,6 +30,8 @@ private:
     Player* createPlayer(const PlayerCtx& playersCtx, char symbol);
     void togglePlayer();
 
+    bool checkVictory();
+
 private:
     enum class StateRequest
     {
@@ -44,7 +46,20 @@ private:
     Board m_board;
 
     using Players = std::array<Player*, 2>;
-    uint32_t m_currentPlayerIndex = 0u;
+    uint32_t m_currentPlayerIndex = 1u;
     Players m_players;
-    bool m_succesSetPoint;
+
+private:
+    int m_victoryCombinations[8][3] =
+    {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+        {0, 4, 8},
+        {2, 4, 6}
+    };
+
 };
