@@ -22,6 +22,7 @@ public:
 
 private:
     void fillBoard(std::string& boardBuff) const;
+    bool checkWin() const;
 
 private:
     Data m_data;
@@ -31,5 +32,3 @@ private:
 };
 
 
-// процессинтпут запрашивает номер ячейки, потом передает его в геймпэйдж, геймпэйдж передает его в oninput плейера
-// где он валидируется и передается в setpoint борда, а гейм пэдж переключает юзеров 

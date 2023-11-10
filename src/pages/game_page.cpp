@@ -97,6 +97,10 @@ void GamePage::renderErrorInput(std::string& buff) const
     buff.append("\nError input. Try again.\n");
 }
 
+void GamePage::renderGameResult(std::string& buff) const
+{
+}
+
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)
 {
     if (playersCtx.playerType == PlayerCtx::Type::Player)
@@ -117,14 +121,4 @@ void GamePage::togglePlayer()
     {
         m_currentPlayerIndex = 1;
     }
-}
-
-bool GamePage::checkVictory()
-{
-    for (auto &&i : m_victoryCombinations)
-    {
-        
-    }
-    
-    return false;
 }
