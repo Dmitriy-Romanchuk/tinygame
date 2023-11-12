@@ -46,9 +46,10 @@ void GamePage::update()
         togglePlayer();
     }
 
-    if(m_board.checkWin() == true)
+    if (m_board.checkWin() == true)
     {
         m_requestState = StateRequest::GameResult;
+        togglePlayer();
     }
 }
 
@@ -73,7 +74,8 @@ void GamePage::render()
             renderErrorInput(buff);
             m_hasInputError = false;
         }
-    
+        break;
+
     case StateRequest::GameResult:
         renderGameResult(buff);
         break;
@@ -106,7 +108,8 @@ void GamePage::renderErrorInput(std::string& buff) const
 
 void GamePage::renderGameResult(std::string& buff) const
 {
-    std::cout << "RenderGameResult" << std::endl;
+    buff.append(m_players[m_currentPlayerIndex]->getPlayerName());
+    buff.append(", you are winner!\n");
 }
 
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)
