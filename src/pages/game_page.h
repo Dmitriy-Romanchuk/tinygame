@@ -37,6 +37,7 @@ private:
         Welcome,
         CellNumber,
         ErrorInput,
+        GameResult
     };
 
 private:

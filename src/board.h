@@ -17,12 +17,13 @@ public:
 public:
     void render(std::string& buff) const;
     bool trySetPoint(uint32_t cellNumber, char symbol);
+    bool checkWin() const;
 
     const Data& getData() const;
 
 private:
     void fillBoard(std::string& boardBuff) const;
-    bool checkWin() const;
+    
 
 private:
     Data m_data;

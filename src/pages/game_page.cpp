@@ -45,6 +45,11 @@ void GamePage::update()
     {
         togglePlayer();
     }
+
+    if(m_board.checkWin() == true)
+    {
+        m_requestState = StateRequest::GameResult;
+    }
 }
 
 void GamePage::render()
@@ -68,7 +73,9 @@ void GamePage::render()
             renderErrorInput(buff);
             m_hasInputError = false;
         }
-
+    
+    case StateRequest::GameResult:
+        renderGameResult(buff);
         break;
 
     default:
@@ -99,6 +106,7 @@ void GamePage::renderErrorInput(std::string& buff) const
 
 void GamePage::renderGameResult(std::string& buff) const
 {
+    std::cout << "RenderGameResult" << std::endl;
 }
 
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)

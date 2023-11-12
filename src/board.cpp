@@ -64,14 +64,14 @@ void Board::fillBoard(std::string& boardBuff) const
 
 bool Board::checkWin() const
 {
-    if(m_data[0] == m_data[1] && m_data[1] == m_data[2]) return true;
-    else if(m_data[3] == m_data[4] && m_data[4] == m_data[5]) return true;
-    else if(m_data[6] == m_data[7] && m_data[7] == m_data[8]) return true;
-    else if(m_data[0] == m_data[3] && m_data[3] == m_data[6]) return true;
-    else if(m_data[1] == m_data[4] && m_data[4] == m_data[7]) return true;
-    else if(m_data[2] == m_data[5] && m_data[5] == m_data[8]) return true;
-    else if(m_data[0] == m_data[4] && m_data[4] == m_data[8]) return true;
-    else if(m_data[2] == m_data[4] && m_data[4] == m_data[6]) return true;
+    if(m_data[0] == m_data[1] && m_data[1] == m_data[2] && m_data[1] != ' ') return true;
+    else if(m_data[3] == m_data[4] && m_data[4] == m_data[5] && m_data[4] != ' ') return true;
+    else if(m_data[6] == m_data[7] && m_data[7] == m_data[8] && m_data[7] != ' ') return true;
+    else if(m_data[0] == m_data[3] && m_data[3] == m_data[6] && m_data[3] != ' ') return true;
+    else if(m_data[1] == m_data[4] && m_data[4] == m_data[7] && m_data[4] != ' ') return true;
+    else if(m_data[2] == m_data[5] && m_data[5] == m_data[8] && m_data[5] != ' ') return true;
+    else if(m_data[0] == m_data[4] && m_data[4] == m_data[8] && m_data[4] != ' ') return true;
+    else if(m_data[2] == m_data[4] && m_data[4] == m_data[6] && m_data[4] != ' ') return true;
 
     return false;
 }
