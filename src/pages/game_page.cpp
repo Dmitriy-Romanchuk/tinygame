@@ -98,7 +98,7 @@ void GamePage::renderCellNumber(std::string& buff) const
     m_board.render(buff);
 
     buff.append(m_players[m_currentPlayerIndex]->getPlayerName());
-    buff.append("! Yours move in the game!\nSelect cell number in range (1...9): ");
+    buff.append("! Your move in the game!\nSelect cell number in range (1...9): ");
 }
 
 void GamePage::renderErrorInput(std::string& buff) const
@@ -109,7 +109,7 @@ void GamePage::renderErrorInput(std::string& buff) const
 void GamePage::renderGameResult(std::string& buff) const
 {
     buff.append(m_players[m_currentPlayerIndex]->getPlayerName());
-    buff.append(", you are winner!\n");
+    buff.append(", you are a winner!\n");
 }
 
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)
