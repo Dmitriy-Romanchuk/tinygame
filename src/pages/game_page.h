@@ -26,7 +26,8 @@ private:
     void renderWelcome(std::string& buff) const;
     void renderCellNumber(std::string& buff) const;
     void renderErrorInput(std::string& buff) const;
-    void renderGameResult(std::string& buff) const;
+    void renderWinner(std::string& buff) const;
+    void renderDraw(std::string& buff) const;
 
     Player* createPlayer(const PlayerCtx& playersCtx, char symbol);
     void togglePlayer();
@@ -48,5 +49,6 @@ private:
     using Players = std::array<Player*, 2>;
     uint32_t m_currentPlayerIndex = 1u;
     Players m_players;
+    Board::State boardState = Board::State::Start;
 
 };

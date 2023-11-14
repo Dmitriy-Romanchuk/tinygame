@@ -36,34 +36,12 @@ void GamePage::onInput(const std::string& input)
 
 void GamePage::update(float dt)
 {
-    // if (m_requestState == StateRequest::Welcome)
-    // {
-    //     m_requestState = StateRequest::CellNumber;
-    //     return;
-    // }
-
-
-
-    // if (boardState != Board::State::Active)
-    // {
-    //     m_requestState = StateRequest::GameResult;
-    //     return;
-    // }
-    m_board.update(float dt);
-    auto boardState = m_board.getState();
+    boardState = m_board.updateState();
 
     if (m_hasInputError == false && boardState == Board::State::Active)
     {
         togglePlayer();
     }
-
-    // if (m_board.checkWin() == true)
-    // {
-    //     m_requestState = StateRequest::GameResult;
-    //     togglePlayer();
-    // }
-
-
 }
 
 void GamePage::render()
@@ -72,13 +50,13 @@ void GamePage::render()
     // buff.reserve(1000);
     // buff.clear();
 
-    switch (m_requestState)
+    switch (boardState)
     {
-    case StateRequest::Welcome:
+    case Board::State::Start:
         renderWelcome(buff);
         break;
 
-    case StateRequest::CellNumber:
+    case Board::State::Active:
 
         renderCellNumber(buff);
 
@@ -89,8 +67,12 @@ void GamePage::render()
         }
         break;
 
-    case StateRequest::GameResult:
-        renderGameResult(buff);
+    case Board::State::Win:
+        renderWinner(buff);
+        break;
+
+    case Board::State::Draw:
+        renderDraw(buff);
         break;
 
     default:
@@ -119,10 +101,15 @@ void GamePage::renderErrorInput(std::string& buff) const
     buff.append("\nError input. Try again.\n");
 }
 
-void GamePage::renderGameResult(std::string& buff) const
+void GamePage::renderWinner(std::string& buff) const
 {
     buff.append(m_players[m_currentPlayerIndex]->getPlayerName());
     buff.append(", you are a winner!\n");
+}
+
+void GamePage::renderDraw(std::string& buff) const
+{
+    buff.append("It's a draw!\n");
 }
 
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)

@@ -1,7 +1,5 @@
 #include "board.h"
 
-#include <bits/stdc++.h>
-#include
 #include <iomanip>
 #include <iostream>
 
@@ -23,12 +21,6 @@ namespace
 
 Board::Board()
 {
-    clearBoard();
-}
-
-void Board::start()
-{
-    m_state = State::Active;
     clearBoard();
 }
 
@@ -80,35 +72,23 @@ void Board::clearBoard()
     m_data.fill(' ');
 }
 
-Board::State Board::getState() const
+Board::State Board::updateState()
 {
     if ((m_data[1] != ' ' && m_data[0] == m_data[1] && m_data[1] == m_data[2])
-        || (m_data[4] != ' ' && m_data[3] == m_data[4] && m_data[4] == m_data[5]))
+        || (m_data[4] != ' ' && m_data[3] == m_data[4] && m_data[4] == m_data[5])
+        || (m_data[7] != ' ' && m_data[6] == m_data[7] && m_data[7] == m_data[8])
+        || (m_data[4] != ' ' && m_data[1] == m_data[4] && m_data[4] == m_data[7])
+        || (m_data[5] != ' ' && m_data[2] == m_data[5] && m_data[5] == m_data[8])
+        || (m_data[6] != ' ' && m_data[3] == m_data[6] && m_data[6] == m_data[9])
+        || (m_data[5] != ' ' && m_data[1] == m_data[5] && m_data[5] == m_data[9])
+        || (m_data[5] != ' ' && m_data[3] == m_data[5] && m_data[5] == m_data[7]))
     {
-        return Board::State::Win;
+        m_state = Board::State::Win;
+        return m_state;
     }
-    return m_state;
-
-    if (m_data[1] != ' ' && m_data[0] == m_data[1] && m_data[1] == m_data[2])
+    else
     {
-        return Board::State::Win;
+        m_state = Board::State::Active;
+        return m_state;
     }
-    else if (m_data[3] == m_data[4] && m_data[4] == m_data[5] && m_data[4] != ' ')
-        return Board::State::Win;
-    else if (m_data[6] == m_data[7] && m_data[7] == m_data[8] && m_data[7] != ' ')
-        return Board::State::Win;
-    else if (m_data[0] == m_data[3] && m_data[3] == m_data[6] && m_data[3] != ' ')
-        return Board::State::Win;
-    else if (m_data[1] == m_data[4] && m_data[4] == m_data[7] && m_data[4] != ' ')
-        return Board::State::Win;
-    else if (m_data[2] == m_data[5] && m_data[5] == m_data[8] && m_data[5] != ' ')
-        return Board::State::Win;
-    else if (m_data[0] == m_data[4] && m_data[4] == m_data[8] && m_data[4] != ' ')
-        return Board::State::Win;
-    else if (m_data[2] == m_data[4] && m_data[4] == m_data[6] && m_data[4] != ' ')
-        return Board::State::Win;
-
-    bool exists = any_of_equal(m_data, ' ');
-
-    return Board::State::Active;
 }

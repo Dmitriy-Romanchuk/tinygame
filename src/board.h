@@ -13,6 +13,7 @@ public:
 
     enum class State
     {
+        Start,
         NoActive,
         Active,
         Win,
@@ -25,9 +26,8 @@ public:
 public:
     void render(std::string& buff) const;
     bool trySetPoint(uint32_t cellNumber, char symbol);
-    State getState() const;
+    State updateState();
 
-    void start();
     void update(float dt);
 
     const Data& getData() const;
