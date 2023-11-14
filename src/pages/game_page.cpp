@@ -34,23 +34,36 @@ void GamePage::onInput(const std::string& input)
     }
 }
 
-void GamePage::update()
+void GamePage::update(float dt)
 {
-    if (m_requestState == StateRequest::Welcome)
-    {
-        m_requestState = StateRequest::CellNumber;
-    }
+    // if (m_requestState == StateRequest::Welcome)
+    // {
+    //     m_requestState = StateRequest::CellNumber;
+    //     return;
+    // }
 
-    if (m_hasInputError == false)
+
+
+    // if (boardState != Board::State::Active)
+    // {
+    //     m_requestState = StateRequest::GameResult;
+    //     return;
+    // }
+    m_board.update(float dt);
+    auto boardState = m_board.getState();
+
+    if (m_hasInputError == false && boardState == Board::State::Active)
     {
         togglePlayer();
     }
 
-    if (m_board.checkWin() == true)
-    {
-        m_requestState = StateRequest::GameResult;
-        togglePlayer();
-    }
+    // if (m_board.checkWin() == true)
+    // {
+    //     m_requestState = StateRequest::GameResult;
+    //     togglePlayer();
+    // }
+
+
 }
 
 void GamePage::render()

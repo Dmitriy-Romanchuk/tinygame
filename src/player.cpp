@@ -13,21 +13,22 @@ Player::~Player()
 {
 }
 
-bool Player::onInput(std::string input)
+bool Player::onInput(const std::string& input)
 {
-    if (input.size() > 1 || std::stoi(input) > 9 || std::stoi(input) <= 0)
-    {
-        return true;
-    }
 
     int cellNumber = std::stoi(input) - 1;
-
-    if(m_board->trySetPoint(cellNumber, m_symbol) == true)
+    if (cellNumber > 8 || cellNumber < 0)
     {
-        return true;
+        return false;
     }
 
-    return false;
+
+    if(m_board->trySetPoint(cellNumber, m_symbol) == false)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 std::string Player::getPlayerName()

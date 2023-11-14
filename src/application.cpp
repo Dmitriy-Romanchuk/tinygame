@@ -34,7 +34,7 @@ void Application::run()
         input.clear();
         processInput(input);
         m_currentPage->onInput(input);
-        m_currentPage->update();
+        m_currentPage->update(defaultDeltaTime);
     }
 }
 

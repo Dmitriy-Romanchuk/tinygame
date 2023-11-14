@@ -23,12 +23,12 @@ void Splash::onInput(const std::string& input)
 {
 }
 
-void Splash::update()
+void Splash::update(float dt)
 {
-    if (m_DelayTime > 0)
+    if (m_DelayTime > 0.0f)
     {
-        Sleep(1000);
-        --m_DelayTime;
+        Sleep(dt * 1000.f);
+        m_DelayTime -= dt;
     }
     else
     {
@@ -38,7 +38,5 @@ void Splash::update()
 
 void Splash::render()
 {
-    
     std::cout << "Loading... " << m_DelayTime << std::endl;
-    
 }

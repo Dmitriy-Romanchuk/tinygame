@@ -13,9 +13,9 @@ public:
     Type getPageType() const override;
 
     void onInput(const std::string& input) override;
-    void update() override;
+    void update(float dt) override;
     void render() override;
 
 private:
-    int m_DelayTime = 3;
+    float m_DelayTime = 3.0f;
 };

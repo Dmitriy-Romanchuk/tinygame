@@ -14,7 +14,7 @@ public:
     ~Player();
 
 public:
-    bool onInput(std::string input);
+    bool onInput(const std::string& input);
     std::string getPlayerName();
 
 private:

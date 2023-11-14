@@ -19,7 +19,7 @@ public:
     Type getPageType() const;
 
     void onInput(const std::string& input) override;
-    void update() override;
+    void update(float dt) override;
     void render() override;
 
 private:
