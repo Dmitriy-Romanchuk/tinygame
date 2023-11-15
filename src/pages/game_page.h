@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "application.h"
+// #include "application.h"
 #include "PlayerCtx.h"
 #include "page.h"
 
@@ -33,22 +33,11 @@ private:
     void togglePlayer();
 
 private:
-    enum class StateRequest
-    {
-        Welcome,
-        CellNumber,
-        ErrorInput,
-        GameResult
-    };
-
-private:
     bool m_hasInputError = false;
-    StateRequest m_requestState = StateRequest::Welcome;
     Board m_board;
 
     using Players = std::array<Player*, 2>;
     uint32_t m_currentPlayerIndex = 1u;
     Players m_players;
     Board::State boardState = Board::State::Start;
-
 };

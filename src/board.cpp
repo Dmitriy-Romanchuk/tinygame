@@ -26,12 +26,17 @@ Board::Board()
 
 void Board::update(float dt)
 {
-    updateState();
+    m_state = updateState();
 }
 
 const Board::Data& Board::getData() const
 {
     return m_data;
+}
+
+const Board::State& Board::getState() const
+{
+    return m_state;
 }
 
 void Board::render(std::string& buff) const
@@ -49,11 +54,11 @@ bool Board::trySetPoint(uint32_t cellNumber, char symbol)
 
     if (m_data[cellNumber] != ' ')
     {
-        return true;
+        return false;
     }
 
     m_data[cellNumber] = symbol;
-    return false;
+    return true;
 }
 
 void Board::fillBoard(std::string& boardBuff) const
@@ -83,12 +88,10 @@ Board::State Board::updateState()
         || (m_data[5] != ' ' && m_data[1] == m_data[5] && m_data[5] == m_data[9])
         || (m_data[5] != ' ' && m_data[3] == m_data[5] && m_data[5] == m_data[7]))
     {
-        m_state = Board::State::Win;
-        return m_state;
+        return Board::State::Win;
     }
     else
     {
-        m_state = Board::State::Active;
-        return m_state;
+        return Board::State::Active;
     }
 }

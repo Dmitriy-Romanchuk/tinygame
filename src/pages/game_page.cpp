@@ -24,11 +24,11 @@ Page::Type GamePage::getPageType() const
 
 void GamePage::onInput(const std::string& input)
 {
-    if (m_requestState == StateRequest::Welcome)
+    if (boardState == Board::State::Start)
     {
         return;
     }
-    else if (m_requestState == StateRequest::CellNumber)
+    else if (boardState == Board::State::Active)
     {
         m_hasInputError = m_players[m_currentPlayerIndex]->onInput(input);
     }
@@ -36,7 +36,8 @@ void GamePage::onInput(const std::string& input)
 
 void GamePage::update(float dt)
 {
-    boardState = m_board.updateState();
+    m_board.update(dt);
+    boardState = m_board.getState();
 
     if (m_hasInputError == false && boardState == Board::State::Active)
     {
