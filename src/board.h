@@ -32,6 +32,7 @@ public:
 
     const Data& getData() const;
     const State& getState() const;
+    void incrementStepsCount();
 
 private:
     void fillBoard(std::string& boardBuff) const;

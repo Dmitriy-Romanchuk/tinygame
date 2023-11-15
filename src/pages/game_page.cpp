@@ -26,7 +26,10 @@ void GamePage::onInput(const std::string& input)
 {
     if (boardState == Board::State::Start)
     {
-        return;
+        if (input.empty())
+        {
+            return;
+        }
     }
     else if (boardState == Board::State::Active)
     {
@@ -41,6 +44,7 @@ void GamePage::update(float dt)
 
     if (m_hasInputError == false && boardState == Board::State::Active)
     {
+        m_board.incrementStepsCount();
         togglePlayer();
     }
 }
@@ -86,7 +90,7 @@ void GamePage::render()
 
 void GamePage::renderWelcome(std::string& buff) const
 {
-    buff.append("Starting battle!\n");
+    buff.append("Starting battle!\nPress \"1\" to start");
 }
 
 void GamePage::renderCellNumber(std::string& buff) const

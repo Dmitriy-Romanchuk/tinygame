@@ -39,6 +39,11 @@ const Board::State& Board::getState() const
     return m_state;
 }
 
+void Board::incrementStepsCount()
+{
+    stepsCount++;
+}
+
 void Board::render(std::string& buff) const
 {
     static std::string boardBuff(BoardTemplate);
@@ -82,16 +87,18 @@ Board::State Board::updateState()
     if ((m_data[1] != ' ' && m_data[0] == m_data[1] && m_data[1] == m_data[2])
         || (m_data[4] != ' ' && m_data[3] == m_data[4] && m_data[4] == m_data[5])
         || (m_data[7] != ' ' && m_data[6] == m_data[7] && m_data[7] == m_data[8])
+        || (m_data[3] != ' ' && m_data[0] == m_data[3] && m_data[3] == m_data[6])
         || (m_data[4] != ' ' && m_data[1] == m_data[4] && m_data[4] == m_data[7])
         || (m_data[5] != ' ' && m_data[2] == m_data[5] && m_data[5] == m_data[8])
-        || (m_data[6] != ' ' && m_data[3] == m_data[6] && m_data[6] == m_data[9])
-        || (m_data[5] != ' ' && m_data[1] == m_data[5] && m_data[5] == m_data[9])
-        || (m_data[5] != ' ' && m_data[3] == m_data[5] && m_data[5] == m_data[7]))
+        || (m_data[4] != ' ' && m_data[0] == m_data[4] && m_data[4] == m_data[8])
+        || (m_data[4] != ' ' && m_data[2] == m_data[4] && m_data[4] == m_data[6]))
     {
         return Board::State::Win;
     }
-    else
+    else if (stepsCount == 9)
     {
-        return Board::State::Active;
+        return Board::State::Draw;
     }
+
+    return Board::State::Active;
 }

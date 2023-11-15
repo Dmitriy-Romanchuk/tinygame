@@ -1,10 +1,11 @@
 #include "application.h"
+#include "board.h"
 #include "lobby.h"
 #include "page.h"
 #include "splash.h"
 
-#include <iostream>
 #include <cassert>
+#include <iostream>
 
 Application::Application()
 {
@@ -48,7 +49,7 @@ void Application::processInput(std::string& input) const
     {
         return;
     }
-    
+
     std::cin >> input;
 }
 
