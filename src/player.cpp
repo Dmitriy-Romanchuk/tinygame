@@ -18,10 +18,6 @@ Player::Player(Board* board, char symbol, const PlayerCtx& ctx)
 {
 }
 
-Player::~Player()
-{
-}
-
 bool Player::onInput(const std::string& input)
 {
     int inputOnInt{};
@@ -55,12 +51,3 @@ std::string Player::getPlayerName()
 {
     return m_ctx.playerName;
 }
-
-#include <cassert>
-#include <charconv>
-#include <iomanip>
-#include <iostream>
-#include <optional>
-#include <string>
-#include <string_view>
-#include <system_error>

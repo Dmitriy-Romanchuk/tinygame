@@ -7,7 +7,9 @@
 #include "board.h"
 #include "player.h"
 
+#include <memory>
 #include <string>
+
 
 class GamePage : public Page
 {
@@ -36,7 +38,7 @@ private:
     bool m_hasInputError = false;
     Board m_board;
 
-    using Players = std::array<Player*, 2>;
+    using Players = std::array<std::unique_ptr<Player>, 2>;
     uint32_t m_currentPlayerIndex = 1u;
     Players m_players;
     Board::State boardState = Board::State::Start;

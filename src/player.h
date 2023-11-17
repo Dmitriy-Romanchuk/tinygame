@@ -11,7 +11,6 @@ class Player
 {
 public:
     Player(Board* board, char symbol, const PlayerCtx& ctx);
-    ~Player();
 
 public:
     bool onInput(const std::string& input);
