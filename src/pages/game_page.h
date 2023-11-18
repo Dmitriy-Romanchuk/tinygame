@@ -15,7 +15,7 @@ class GamePage : public Page
 {
 public:
     GamePage(Application* app, const PlayersCtx& playersCtx);
-    ~GamePage();
+   // ~GamePage();
 
 public:
     Type getPageType() const;

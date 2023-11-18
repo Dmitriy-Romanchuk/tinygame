@@ -10,6 +10,10 @@ GamePage::GamePage(Application* app, const PlayersCtx& playersCtx)
     m_players[1].reset(createPlayer(playersCtx[1], 'O'));
 }
 
+//GamePage::~GamePage()
+//{
+//}
+
 Page::Type GamePage::getPageType() const
 {
     return Page::Type::Game;
