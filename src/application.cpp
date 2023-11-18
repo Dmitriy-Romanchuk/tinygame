@@ -16,6 +16,12 @@ Application::~Application()
     clearCurrentPage();
 }
 
+Application& Application::appInstance()
+{
+    static Application game;
+    return game;
+}
+
 void Application::init()
 {
     swapPage(Page::Type::Splash);

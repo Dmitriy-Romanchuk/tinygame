@@ -4,7 +4,7 @@
 
 int main()
 {
-    Application game;
+    Application game = Application::appInstance();
 
     game.init();
     game.run();

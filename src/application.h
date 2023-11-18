@@ -9,8 +9,9 @@
 class Application final
 {
 public:
-    Application();
     ~Application();
+
+    static Application& appInstance(); 
 
     void init();
     void run();
@@ -21,6 +22,9 @@ public:
 
     const PlayerCtx& getPlayerCotext(uint32_t index) const;
     void setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx);
+
+private:
+    Application();
 
 private:
     Page* createSplashPage();
