@@ -10,12 +10,10 @@
 #include <memory>
 #include <string>
 
-
 class GamePage : public Page
 {
 public:
     GamePage(Application* app, const PlayersCtx& playersCtx);
-   // ~GamePage();
 
 public:
     Type getPageType() const;

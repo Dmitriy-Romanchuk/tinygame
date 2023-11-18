@@ -19,7 +19,8 @@ public:
     virtual ~Page(){};
 
 protected:
-    Page(Application* app) : m_app(app){};
+    Page(Application* app)
+        : m_app(app){};
 
 public:
     virtual Type getPageType() const = 0;

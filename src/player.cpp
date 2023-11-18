@@ -23,12 +23,6 @@ bool Player::onInput(const std::string& input)
     int inputOnInt{};
 
     auto [ptr, ec] = std::from_chars(input.data(), input.data() + input.size(), inputOnInt);
-    //if (ec == std::errc())
-    //    std::cout << "Result: " << inputOnInt << '\n';
-    //else if (ec == std::errc::invalid_argument)
-    //    std::cout << "This is not a number.\n";
-    //else if (ec == std::errc::result_out_of_range)
-    //    std::cout << "This number is larger than an int.\n";
 
     inputOnInt = inputOnInt - 1;
 

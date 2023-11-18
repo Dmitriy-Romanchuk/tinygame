@@ -2,8 +2,8 @@
 
 #include "page.h"
 
-#include <string>
 #include <cstdint>
+#include <string>
 
 class Lobby final : public Page
 {

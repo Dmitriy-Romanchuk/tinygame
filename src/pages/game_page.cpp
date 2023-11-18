@@ -2,17 +2,12 @@
 
 #include <iostream>
 
-
 GamePage::GamePage(Application* app, const PlayersCtx& playersCtx)
     : Page(app)
 {
     m_players[0].reset(createPlayer(playersCtx[0], 'X'));
     m_players[1].reset(createPlayer(playersCtx[1], 'O'));
 }
-
-//GamePage::~GamePage()
-//{
-//}
 
 Page::Type GamePage::getPageType() const
 {
