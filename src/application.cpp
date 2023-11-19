@@ -119,3 +119,8 @@ void Application::setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx)
     assert(index < m_players.size());
     m_players[index] = playerCtx;
 }
+
+void Application::IsRunningUpdate()
+{
+    m_IsRunning = false;
+}

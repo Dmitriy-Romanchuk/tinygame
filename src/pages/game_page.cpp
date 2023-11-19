@@ -1,4 +1,5 @@
 #include "game_page.h"
+#include "application.h"
 
 #include <iostream>
 
@@ -16,16 +17,14 @@ Page::Type GamePage::getPageType() const
 
 void GamePage::onInput(const std::string& input)
 {
-    if (boardState == Board::State::Start)
-    {
-        if (input.empty())
-        {
-            return;
-        }
-    }
-    else if (boardState == Board::State::Active)
+    if (boardState == Board::State::Active)
     {
         m_hasInputError = m_players[m_currentPlayerIndex]->onInput(input);
+    }
+
+    if ((boardState == Board::State::Draw || boardState == Board::State::Win) && input == "n")
+    {
+        m_endOfGame = true;
     }
 }
 
@@ -39,6 +38,15 @@ void GamePage::update(float dt)
         m_board.incrementStepsCount();
         togglePlayer();
     }
+
+    if (boardState != Board::State::Active && m_endOfGame == true)
+    {
+        m_app->IsRunningUpdate();
+    }
+    //else if (boardState != Board::State::Active && m_endOfGame == false)
+    //{
+    //    boardState = Board::State::Active;
+    //}
 }
 
 void GamePage::render()
@@ -102,11 +110,15 @@ void GamePage::renderWinner(std::string& buff) const
 {
     buff.append(m_players[m_currentPlayerIndex]->getPlayerName());
     buff.append(", you are a winner!\n");
+    m_board.render(buff);
+    buff.append("\nWould you like play again? y/n: ");
 }
 
 void GamePage::renderDraw(std::string& buff) const
 {
     buff.append("It's a draw!\n");
+    m_board.render(buff);
+    buff.append("\nWould you like play again? y/n: ");
 }
 
 Player* GamePage::createPlayer(const PlayerCtx& playersCtx, char symbol)

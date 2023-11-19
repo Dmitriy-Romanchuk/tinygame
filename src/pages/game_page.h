@@ -1,6 +1,6 @@
 #pragma once
 
-// #include "application.h"
+
 #include "PlayerCtx.h"
 #include "page.h"
 
@@ -35,6 +35,7 @@ private:
 private:
     bool m_hasInputError = false;
     Board m_board;
+    bool m_endOfGame = false;
 
     using Players = std::array<std::unique_ptr<Player>, 2>;
     uint32_t m_currentPlayerIndex = 1u;

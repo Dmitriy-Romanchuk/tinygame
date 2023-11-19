@@ -22,6 +22,7 @@ public:
 
     const PlayerCtx& getPlayerCotext(uint32_t index) const;
     void setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx);
+    void IsRunningUpdate();
 
 private:
     Application();
