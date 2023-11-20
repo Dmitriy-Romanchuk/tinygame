@@ -9,10 +9,16 @@
 class Application final
 {
 public:
+    static Application& getInstance();
     ~Application();
 
-    static Application& appInstance(); 
+    Application(const Application&) = delete;
+    Application(Application&&) = delete;
 
+    Application& operator=(const Application&) = delete;
+    Application& operator=(Application&&) = delete;
+
+public:
     void init();
     void run();
     void deinit();
@@ -22,10 +28,9 @@ public:
 
     const PlayerCtx& getPlayerCotext(uint32_t index) const;
     void setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx);
-    void IsRunningUpdate();
 
 private:
-    Application();
+    Application(){};
 
 private:
     Page* createSplashPage();
@@ -35,7 +40,7 @@ private:
     void clearCurrentPage();
 
 private:
-    bool m_IsRunning = true;
+    // bool m_IsRunning = true;
     PlayersCtx m_players;
     PlayerCtx m_currentPlayer;
 

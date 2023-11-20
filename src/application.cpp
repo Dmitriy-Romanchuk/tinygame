@@ -7,16 +7,12 @@
 #include <cassert>
 #include <iostream>
 
-Application::Application()
-{
-}
-
 Application::~Application()
 {
     clearCurrentPage();
 }
 
-Application& Application::appInstance()
+Application& Application::getInstance()
 {
     static Application game;
     return game;
@@ -32,7 +28,7 @@ void Application::run()
     constexpr float defaultDeltaTime = 1.0f / 60.0f;
     std::string input;
 
-    while (m_IsRunning)
+    while (m_currentPage->isReadyToQuit() == false)
     {
         system("cls");
 
@@ -90,17 +86,17 @@ void Application::swapPage(Page::Type pageType)
 
 Page* Application::createSplashPage()
 {
-    return new Splash(this);
+    return new Splash();
 }
 
 Page* Application::createLobbyPage()
 {
-    return new Lobby(this);
+    return new Lobby();
 }
 
 Page* Application::createGamePage()
 {
-    return new GamePage(this, m_players);
+    return new GamePage(m_players);
 }
 
 void Application::clearCurrentPage()
@@ -118,9 +114,4 @@ void Application::setPlayerCotext(uint32_t index, const PlayerCtx& playerCtx)
 {
     assert(index < m_players.size());
     m_players[index] = playerCtx;
-}
-
-void Application::IsRunningUpdate()
-{
-    m_IsRunning = false;
 }

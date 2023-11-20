@@ -6,8 +6,7 @@
 class Splash final : public Page
 {
 public:
-    Splash(Application* app);
-    ~Splash();
+    Splash(){};
 
 public:
     Type getPageType() const override;

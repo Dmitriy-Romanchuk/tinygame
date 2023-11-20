@@ -8,8 +8,7 @@
 class Lobby final : public Page
 {
 public:
-    Lobby(Application* app);
-    ~Lobby();
+    Lobby(){};
 
 public:
     Type getPageType() const;

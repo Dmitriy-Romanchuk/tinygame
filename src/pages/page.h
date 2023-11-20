@@ -15,21 +15,17 @@ public:
     };
 
 public:
-    Page(){};
     virtual ~Page(){};
-
-protected:
-    Page(Application* app)
-        : m_app(app){};
 
 public:
     virtual Type getPageType() const = 0;
+    virtual bool isReadyToQuit()
+    {
+        return false;
+    };
 
 public:
     virtual void onInput(const std::string& input) = 0;
     virtual void update(float dt) = 0;
     virtual void render() = 0;
-
-protected:
-    Application* m_app;
 };

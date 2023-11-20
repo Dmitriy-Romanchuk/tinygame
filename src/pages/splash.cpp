@@ -5,15 +5,6 @@
 #include <iostream>
 #include <windows.h>
 
-Splash::Splash(Application* app)
-    : Page(app)
-{
-}
-
-Splash::~Splash()
-{
-}
-
 Page::Type Splash::getPageType() const
 {
     return Page::Type::Splash;
@@ -32,7 +23,8 @@ void Splash::update(float dt)
     }
     else
     {
-        m_app->swapPage(Page::Type::Lobby);
+        auto& app = Application::getInstance();
+        app.swapPage(Page::Type::Lobby);
     }
 }
 

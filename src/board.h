@@ -32,7 +32,10 @@ public:
 
     const Data& getData() const;
     const State& getState() const;
-    void incrementStepsCount();
+
+    uint32_t getCurrentPlayerIndex() const;
+
+    void restart();
 
 private:
     void fillBoard(std::string& boardBuff) const;
@@ -40,8 +43,7 @@ private:
 
 private:
     Data m_data;
-    std::string m_gameBoard;
-    uint32_t stepsCount = 0;
 
+    uint32_t m_stepsCount = 0;
     State m_state = State::NoActive;
 };

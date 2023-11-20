@@ -3,15 +3,6 @@
 
 #include <iostream>
 
-Lobby::Lobby(Application* app)
-    : Page(app)
-{
-}
-
-Lobby::~Lobby()
-{
-}
-
 Page::Type Lobby::getPageType() const
 {
     return Page::Type::Lobby;
@@ -53,13 +44,15 @@ void Lobby::update(float dt)
 {
     if (m_playerCounter >= m_maxPlayers)
     {
-        m_app->swapPage(Page::Type::Game);
+        auto& app = Application::getInstance();
+        app.swapPage(Page::Type::Game);
     }
 }
 
 void Lobby::fillPlayerCtx(const std::string& input)
 {
-    auto playerCtx = m_app->getPlayerCotext(m_playerCounter);
+    auto& app = Application::getInstance();
+    auto playerCtx = app.getPlayerCotext(m_playerCounter);
 
     if (m_requestState == StateRequest::PlayerType)
     {
@@ -79,7 +72,7 @@ void Lobby::fillPlayerCtx(const std::string& input)
         playerCtx.playerName = input;
     }
 
-    m_app->setPlayerCotext(m_playerCounter, playerCtx);
+    app.setPlayerCotext(m_playerCounter, playerCtx);
 }
 
 void Lobby::renderRequestType(std::string& buff) const

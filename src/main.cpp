@@ -4,11 +4,11 @@
 
 int main()
 {
-    Application game = Application::appInstance();
+    Application& app = Application::getInstance();
 
-    game.init();
-    game.run();
-    game.deinit();
+    app.init();
+    app.run();
+    app.deinit();
 
     system("pause");
 

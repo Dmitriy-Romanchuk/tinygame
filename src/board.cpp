@@ -27,6 +27,11 @@ Board::Board()
 void Board::update(float dt)
 {
     m_state = updateState();
+
+    if (m_state == Board::State::Active)
+    {
+        m_stepsCount++;
+    }
 }
 
 const Board::Data& Board::getData() const
@@ -39,9 +44,16 @@ const Board::State& Board::getState() const
     return m_state;
 }
 
-void Board::incrementStepsCount()
+uint32_t Board::getCurrentPlayerIndex() const
 {
-    stepsCount++;
+    return m_stepsCount % 2;
+}
+
+void Board::restart()
+{
+    m_state = State::Active;
+    m_stepsCount = 0;
+    clearBoard();
 }
 
 void Board::render(std::string& buff) const
@@ -95,7 +107,7 @@ Board::State Board::updateState()
     {
         return Board::State::Win;
     }
-    else if (stepsCount == 9)
+    else if (m_stepsCount == 9)
     {
         return Board::State::Draw;
     }
