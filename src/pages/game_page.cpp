@@ -23,9 +23,9 @@ void GamePage::onInput(const std::string& input)
 
     auto boardState = m_board.getState();
 
-    if ((boardState == Board::State::Draw || boardState == Board::State::Win) && input == "y")
+    if ((boardState == Board::State::Draw || boardState == Board::State::Win) && input == "yes")
     {
-        m_board.restart();
+        m_board.start();
     }
 
     if (boardState == Board::State::Active)
@@ -50,7 +50,7 @@ void GamePage::render()
 
     switch (m_board.getState())
     {
-    case Board::State::Start:
+    case Board::State::ReadyToStart:
         renderWelcome(buff);
         break;
 
@@ -109,7 +109,7 @@ void GamePage::renderWinner(std::string& buff) const
     buff.append(m_players[m_board.getCurrentPlayerIndex()]->getPlayerName());
     buff.append(", you are a winner!\n");
     m_board.render(buff);
-    buff.append("\nWould you like play again? y/quit: ");
+    buff.append("\nWould you like play again? yes/quit: ");
 }
 
 void GamePage::renderDraw(std::string& buff) const

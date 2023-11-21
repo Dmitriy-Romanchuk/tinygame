@@ -26,11 +26,16 @@ Board::Board()
 
 void Board::update(float dt)
 {
-    m_state = updateState();
+    updateState();
 
     if (m_state == Board::State::Active)
     {
         m_stepsCount++;
+    }
+
+    if (m_state == Board::State::ReadyToStart)
+    {
+        m_state = Board::State::Active;
     }
 }
 
@@ -49,9 +54,9 @@ uint32_t Board::getCurrentPlayerIndex() const
     return m_stepsCount % 2;
 }
 
-void Board::restart()
+void Board::start()
 {
-    m_state = State::Active;
+    m_state = State::ReadyToStart;
     m_stepsCount = 0;
     clearBoard();
 }
@@ -94,7 +99,7 @@ void Board::clearBoard()
     m_data.fill(' ');
 }
 
-Board::State Board::updateState()
+void Board::updateState()
 {
     if ((m_data[1] != ' ' && m_data[0] == m_data[1] && m_data[1] == m_data[2])
         || (m_data[4] != ' ' && m_data[3] == m_data[4] && m_data[4] == m_data[5])
@@ -105,12 +110,10 @@ Board::State Board::updateState()
         || (m_data[4] != ' ' && m_data[0] == m_data[4] && m_data[4] == m_data[8])
         || (m_data[4] != ' ' && m_data[2] == m_data[4] && m_data[4] == m_data[6]))
     {
-        return Board::State::Win;
+        m_state = Board::State::Win;
     }
     else if (m_stepsCount == 9)
     {
-        return Board::State::Draw;
+        m_state = Board::State::Draw;
     }
-
-    return Board::State::Active;
 }

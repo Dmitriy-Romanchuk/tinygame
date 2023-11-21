@@ -13,8 +13,7 @@ public:
 
     enum class State
     {
-        Start,
-        NoActive,
+        ReadyToStart,
         Active,
         Win,
         Draw
@@ -26,7 +25,6 @@ public:
 public:
     void render(std::string& buff) const;
     bool trySetPoint(uint32_t cellNumber, char symbol);
-    State updateState();
 
     void update(float dt);
 
@@ -35,15 +33,16 @@ public:
 
     uint32_t getCurrentPlayerIndex() const;
 
-    void restart();
+    void start();
 
 private:
     void fillBoard(std::string& boardBuff) const;
     void clearBoard();
+    void updateState();
 
 private:
     Data m_data;
 
     uint32_t m_stepsCount = 0;
-    State m_state = State::NoActive;
+    State m_state = State::ReadyToStart;
 };

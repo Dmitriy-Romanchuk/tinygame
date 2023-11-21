@@ -40,7 +40,6 @@ private:
     void clearCurrentPage();
 
 private:
-    // bool m_IsRunning = true;
     PlayersCtx m_players;
     PlayerCtx m_currentPlayer;
 

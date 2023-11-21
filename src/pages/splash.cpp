@@ -3,7 +3,9 @@
 #include "application.h"
 
 #include <iostream>
-#include <windows.h>
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 Page::Type Splash::getPageType() const
 {
@@ -18,7 +20,6 @@ void Splash::update(float dt)
 {
     if (m_DelayTime > 0.0f)
     {
-        Sleep(dt * 1000.f);
         m_DelayTime -= dt;
     }
     else
