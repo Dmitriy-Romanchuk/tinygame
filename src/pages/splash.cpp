@@ -3,9 +3,6 @@
 #include "application.h"
 
 #include <iostream>
-#include <chrono>
-
-using namespace std::chrono_literals;
 
 Page::Type Splash::getPageType() const
 {

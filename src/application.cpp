@@ -6,6 +6,8 @@
 
 #include <cassert>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 Application::~Application()
 {
@@ -25,11 +27,15 @@ void Application::init()
 
 void Application::run()
 {
-    constexpr float defaultDeltaTime = 1.0f / 60.0f;
+    
+    
     std::string input;
 
     while (m_currentPage->isReadyToQuit() == false)
     {
+        float defaultDeltaTime = 1.0f / 40.0f * 1000; //ms
+        const auto start = std::chrono::high_resolution_clock::now();
+
         system("cls");
 
         m_currentPage->render();
@@ -38,6 +44,17 @@ void Application::run()
         processInput(input);
         m_currentPage->onInput(input);
         m_currentPage->update(defaultDeltaTime);
+
+        const auto end = std::chrono::high_resolution_clock::now();
+
+        std::chrono::duration<double, std::milli> elapsed = end - start;
+
+        std::cout << "elapsed.count() " << elapsed.count() << std::endl;
+
+        defaultDeltaTime = elapsed.count()
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(int(elapsed.count() - 25)));
+
     }
 }
 

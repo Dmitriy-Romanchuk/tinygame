@@ -16,5 +16,5 @@ public:
     void render() override;
 
 private:
-    float m_DelayTime = 3.0f;
+    float m_DelayTime = 3000.0f; //ms
 };
