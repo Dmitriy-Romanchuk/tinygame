@@ -8,6 +8,8 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <ncurses.h>
+
 
 Application::~Application()
 {
@@ -22,21 +24,21 @@ Application& Application::getInstance()
 
 void Application::init()
 {
+    initscr();
     swapPage(Page::Type::Splash);
 }
 
 void Application::run()
-{
-    
-    
+{   
     std::string input;
+    
+    float defaultDeltaTime = 1.0f / 60.0f * 1000; //ms
 
     while (m_currentPage->isReadyToQuit() == false)
     {
-        float defaultDeltaTime = 1.0f / 40.0f * 1000; //ms
         const auto start = std::chrono::high_resolution_clock::now();
 
-        system("cls");
+        clear();
 
         m_currentPage->render();
 
@@ -51,15 +53,16 @@ void Application::run()
 
         std::cout << "elapsed.count() " << elapsed.count() << std::endl;
 
-        defaultDeltaTime = elapsed.count()
+        defaultDeltaTime = elapsed.count();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(int(elapsed.count() - 25)));
-
+        std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count()));
     }
 }
 
 void Application::deinit()
 {
+    endwin();
 }
 
 void Application::processInput(std::string& input) const
