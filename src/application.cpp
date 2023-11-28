@@ -8,7 +8,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <ncurses/curses.h>
+
 
 
 Application::~Application()
@@ -41,6 +41,7 @@ void Application::run()
         clear();
 
         m_currentPage->render();
+        refresh();
 
         input.clear();
         processInput(input);
@@ -53,10 +54,13 @@ void Application::run()
 
         std::cout << "elapsed.count() " << elapsed.count() << std::endl;
 
-        defaultDeltaTime = elapsed.count();
+        //defaultDeltaTime = elapsed.count();
+        printw("\nelapsed.count = %f", elapsed.count());
+        refresh();
+
 
         //std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
-        std::this_thread::sleep_for(std::chrono::milliseconds(15));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 }
 

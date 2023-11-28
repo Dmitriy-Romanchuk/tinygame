@@ -28,5 +28,5 @@ void Splash::update(float dt)
 
 void Splash::render()
 {
-    std::cout << "Loading... " << m_DelayTime << std::endl;
+    printw("Loading... %.2f", m_DelayTime);
 }

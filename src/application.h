@@ -5,6 +5,7 @@
 
 #include <stdint.h>
 #include <string>
+#include <ncurses/curses.h>
 
 class Application final
 {
