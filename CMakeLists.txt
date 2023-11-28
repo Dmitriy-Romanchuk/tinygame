@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.21.3)
-SET(CMAKE_C_COMPILER gcc)
 SET(CMAKE_CXX_COMPILER g++)
 
 project(tinygame)
@@ -8,6 +7,10 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/pages
 )
+
+find_package(Curses REQUIRED)
+set(CURSES_CFLAGS "${CURSES_CFLAGS} -lncurses -DNCURSES_STATIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CURSES_CFLAGS}")
 
 set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
@@ -20,3 +23,5 @@ set(SOURCE
 )
 
 add_executable(app ${SOURCE})
+
+target_link_libraries(app ${CURSES_LIBRARY})

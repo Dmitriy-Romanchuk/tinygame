@@ -8,7 +8,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <ncurses.h>
+#include <ncurses/curses.h>
 
 
 Application::~Application()
@@ -55,8 +55,8 @@ void Application::run()
 
         defaultDeltaTime = elapsed.count();
 
-        std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
-        //std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count()));
+        //std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
 }
 
