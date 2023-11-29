@@ -3,6 +3,7 @@
 #include "page.h"
 #include <string>
 
+
 class Splash final : public Page
 {
 public:

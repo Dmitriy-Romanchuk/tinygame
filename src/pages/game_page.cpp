@@ -44,7 +44,7 @@ void GamePage::update(float dt)
 
 void GamePage::render(std::string& buff)
 {
-    std::string buff;
+    
     // buff.reserve(1000);
     // buff.clear();
 

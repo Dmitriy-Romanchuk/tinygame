@@ -60,7 +60,7 @@ void Application::run()
 
 
         //std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
 }
 
@@ -112,7 +112,7 @@ void Application::render() const
 {
     std::string buff;
     m_currentPage->render(buff);
-    printw("%s", buff.c_str());
+    printw(buff.c_str());
 }
 
 Page* Application::createSplashPage()

@@ -24,4 +24,7 @@ set(SOURCE
 
 add_executable(app ${SOURCE})
 
+set_property(TARGET app PROPERTY CXX_STANDARD 20)
+
 target_link_libraries(app ${CURSES_LIBRARY})
+

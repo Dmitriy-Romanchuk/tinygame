@@ -92,7 +92,7 @@ void Lobby::renderErrorInput(std::string& buff) const
 
 void Lobby::render(std::string& buff)
 {
-    std::string buff;
+
     // buff.reserve(1000);
     // buff.clear();
 
