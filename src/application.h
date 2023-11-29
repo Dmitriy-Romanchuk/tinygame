@@ -34,11 +34,14 @@ private:
     Application(){};
 
 private:
+    void render() const;
+    
     Page* createSplashPage();
     Page* createLobbyPage();
     Page* createGamePage();
 
     void clearCurrentPage();
+
 
 private:
     PlayersCtx m_players;

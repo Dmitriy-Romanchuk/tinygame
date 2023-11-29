@@ -90,7 +90,7 @@ void Lobby::renderErrorInput(std::string& buff) const
     buff.append("Error input. Try again.\n");
 }
 
-void Lobby::render()
+void Lobby::render(std::string& buff)
 {
     std::string buff;
     // buff.reserve(1000);

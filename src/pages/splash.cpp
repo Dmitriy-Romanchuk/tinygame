@@ -26,7 +26,8 @@ void Splash::update(float dt)
     }
 }
 
-void Splash::render()
+void Splash::render(std::string& buff)
 {
+    
     printw("Loading... %.2f", m_DelayTime);
 }

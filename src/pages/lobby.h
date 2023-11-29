@@ -15,7 +15,7 @@ public:
 
     void onInput(const std::string& input) override;
     void update(float dt) override;
-    void render() override;
+    void render(std::string& buff) override;
 
 private:
     void renderRequestType(std::string& buff) const;

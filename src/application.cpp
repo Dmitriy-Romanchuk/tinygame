@@ -40,7 +40,7 @@ void Application::run()
 
         clear();
 
-        m_currentPage->render();
+        render();
         refresh();
 
         input.clear();
@@ -106,6 +106,13 @@ void Application::swapPage(Page::Type pageType)
         m_currentPage = createGamePage();
         return;
     }
+}
+
+void Application::render() const
+{
+    std::string buff;
+    m_currentPage->render(buff);
+    printw("%s", buff.c_str());
 }
 
 Page* Application::createSplashPage()

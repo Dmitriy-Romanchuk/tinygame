@@ -13,7 +13,7 @@ public:
 
     void onInput(const std::string& input) override;
     void update(float dt) override;
-    void render() override;
+    void render(std::string& buff) override;
 
 private:
     float m_DelayTime = 3000.0f; //ms
