@@ -1,5 +1,7 @@
 #include "lobby.h"
 #include "application.h"
+#include <format>
+
 
 #include <iostream>
 
@@ -113,6 +115,8 @@ void Lobby::render(std::string& buff)
     default:
         break;
     }
+
+
 
     std::cout << "\t\t*****LOBBY PAGE*****" << std::endl
               << std::endl

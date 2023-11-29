@@ -32,7 +32,7 @@ void Application::run()
 {   
     std::string input;
     
-    float defaultDeltaTime = 1.0f / 60.0f * 1000; //ms
+    float defaultDeltaTime = 1.0f / 60.0f;
 
     while (m_currentPage->isReadyToQuit() == false)
     {

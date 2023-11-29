@@ -29,5 +29,5 @@ void Splash::update(float dt)
 
 void Splash::render(std::string& buff)
 {
-    buff.append(std::format("Loading... {:f}", m_DelayTime));
+    buff.append(std::format("Loading... {:.2f}", m_DelayTime));
 }

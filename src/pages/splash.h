@@ -17,5 +17,5 @@ public:
     void render(std::string& buff) override;
 
 private:
-    float m_DelayTime = 3000.0f; //ms
+    float m_DelayTime = 3.0f; //s
 };
