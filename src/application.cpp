@@ -5,11 +5,9 @@
 #include "splash.h"
 
 #include <cassert>
-#include <iostream>
 #include <chrono>
+#include <iostream>
 #include <thread>
-
-
 
 Application::~Application()
 {
@@ -29,9 +27,10 @@ void Application::init()
 }
 
 void Application::run()
-{   
-    std::string input;
-    
+{
+    std::string inputStr;
+    char* inputChar;
+
     float defaultDeltaTime = 1.0f / 60.0f;
 
     while (m_currentPage->isReadyToQuit() == false)
@@ -41,11 +40,11 @@ void Application::run()
         clear();
 
         render();
-        refresh();
 
-        input.clear();
-        processInput(input);
-        m_currentPage->onInput(input);
+        inputStr.clear();
+        processInput(inputChar);
+        inputStr = inputChar;
+        m_currentPage->onInput(inputStr);
         m_currentPage->update(defaultDeltaTime);
 
         const auto end = std::chrono::high_resolution_clock::now();
@@ -54,12 +53,11 @@ void Application::run()
 
         std::cout << "elapsed.count() " << elapsed.count() << std::endl;
 
-        //defaultDeltaTime = elapsed.count();
+        // defaultDeltaTime = elapsed.count();
         printw("\nelapsed.count = %f", elapsed.count());
         refresh();
 
-
-        //std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
+        // std::chrono::duration_cast<double>(std::this_thread::sleep_for(std::chrono::milliseconds(defaultDeltaTime - elapsed.count())));
         std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
 }
@@ -69,14 +67,14 @@ void Application::deinit()
     endwin();
 }
 
-void Application::processInput(std::string& input) const
+void Application::processInput(char* inputChar) const
 {
     if (m_currentPage->getPageType() == Page::Type::Splash)
     {
         return;
     }
 
-    std::cin >> input;
+    getstr(inputChar);
 }
 
 void Application::swapPage(Page::Type pageType)
@@ -113,6 +111,7 @@ void Application::render() const
     std::string buff;
     m_currentPage->render(buff);
     printw(buff.c_str());
+    refresh();
 }
 
 Page* Application::createSplashPage()

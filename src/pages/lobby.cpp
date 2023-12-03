@@ -2,7 +2,6 @@
 #include "application.h"
 #include <format>
 
-
 #include <iostream>
 
 Page::Type Lobby::getPageType() const
@@ -79,12 +78,12 @@ void Lobby::fillPlayerCtx(const std::string& input)
 
 void Lobby::renderRequestType(std::string& buff) const
 {
-    buff.append("Select player type: press [1] - Player, [2] - Bot:");
+    buff.append("Select player type: press [1] - Player, [2] - Bot: ");
 }
 
 void Lobby::renderRequestName(std::string& buff) const
 {
-    buff.append("Input player name:");
+    buff.append("Input player name: ");
 }
 
 void Lobby::renderErrorInput(std::string& buff) const
@@ -94,9 +93,7 @@ void Lobby::renderErrorInput(std::string& buff) const
 
 void Lobby::render(std::string& buff)
 {
-
-    // buff.reserve(1000);
-    // buff.clear();
+    buff.append(std::format("\t\t*****LOBBY PAGE*****\n\n\n"));
 
     if (m_hasInputError == true)
     {
@@ -115,10 +112,4 @@ void Lobby::render(std::string& buff)
     default:
         break;
     }
-
-
-
-    std::cout << "\t\t*****LOBBY PAGE*****" << std::endl
-              << std::endl
-              << buff << std::endl;
 }

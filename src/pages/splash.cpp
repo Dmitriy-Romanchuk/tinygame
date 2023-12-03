@@ -1,9 +1,9 @@
 #include "splash.h"
 
 #include "application.h"
-#include <format>
-#include <iostream>
 
+
+#include <iostream>
 
 Page::Type Splash::getPageType() const
 {
