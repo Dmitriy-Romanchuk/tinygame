@@ -9,6 +9,11 @@
 #include <iostream>
 #include <thread>
 
+namespace
+{
+    constexpr uint32_t maxInputSymbol = 64;
+} // namespace
+
 Application::~Application()
 {
     clearCurrentPage();
@@ -28,9 +33,7 @@ void Application::init()
 
 void Application::run()
 {
-    std::string inputStr;
-    char* inputChar;
-
+    std::string input;
     float defaultDeltaTime = 1.0f / 60.0f;
 
     while (m_currentPage->isReadyToQuit() == false)
@@ -41,10 +44,9 @@ void Application::run()
 
         render();
 
-        inputStr.clear();
-        processInput(inputChar);
-        inputStr = inputChar;
-        m_currentPage->onInput(inputStr);
+        input.clear();
+        processInput(input);
+        m_currentPage->onInput(input);
         m_currentPage->update(defaultDeltaTime);
 
         const auto end = std::chrono::high_resolution_clock::now();
@@ -67,14 +69,16 @@ void Application::deinit()
     endwin();
 }
 
-void Application::processInput(char* inputChar) const
+void Application::processInput(std::string& input) const
 {
     if (m_currentPage->getPageType() == Page::Type::Splash)
     {
         return;
     }
 
-    getstr(inputChar);
+    char buff[maxInputSymbol];
+    getnstr(buff, maxInputSymbol);
+    input = buff;
 }
 
 void Application::swapPage(Page::Type pageType)

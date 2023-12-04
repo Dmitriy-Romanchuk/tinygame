@@ -24,7 +24,6 @@ public:
     void run();
     void deinit();
 
-    void processInput(char* inputChar) const;
     void swapPage(Page::Type pageType);
 
     const PlayerCtx& getPlayerCotext(uint32_t index) const;
@@ -34,6 +33,7 @@ private:
     Application(){};
 
 private:
+    void processInput(std::string& input) const;
     void render() const;
     
     Page* createSplashPage();
